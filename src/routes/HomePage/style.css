@@ -1,27 +1,101 @@
 .mainBG {
-  background-image: url(../../assets/image/mainPageBG.svg);
+  background-image: url(../../assets/image/mainPageBG-new.svg);
   background-repeat : no-repeat;
   background-position : center;
   background-size:cover;
   height: 100%;
   margin: 0px auto;
-
+  filter: blur(0);
+  transform: unset !important;
 }
 
 .outerCameraFrame{
   height: 100%;
   width: 100%;
-  padding: 10px;
+  padding: 22px;
   box-sizing: border-box;
+  position: relative;
+  
 }
 
 .camera1{
   background-image: url(../../assets/icon/camera1.svg);
+  width: 51px;
+  height: 56px;
   position: absolute;
-  left: 0px;
-  top: 0px;
 }
 
+.camera2{
+  background-image: url(../../assets/icon/camera2.svg);
+  width: 51px;
+  height: 56px;
+  position: absolute;
+  right: 22px;
+}
+
+.camera3{
+  background-image: url(../../assets/icon/camera3.svg);
+  width: 51px;
+  height: 56px;
+  position: absolute;
+  bottom: 22px;
+}
+
+.camera4{
+  background-image: url(../../assets/icon/camera4.svg);
+  width: 51px;
+  height: 56px;
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+}
+
+.innerCameraFrame{
+  background-image: url(../../assets/icon/innerCamera.png);
+  width: 216px;
+  height: 138px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.mainLogo{
+  background-image: url(../../assets/icon/mainLogo.svg);
+  width: 264px;
+  height: 113px;
+  margin:auto;
+  margin-top: 20%;
+  
+}
+
+.mainButtons{
+  margin: auto;
+  width: 168px;
+  margin-top: 75%;
+}
+
+.startButton{
+  width: 168px;
+  height: 44px;
+  /* background: #FFFFFF; */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  /* text-align: center;
+  line-height: 44px; */
+  background-image: url(../../assets/icon/maintestbutton1.svg);
+}
+
+.eventButton{
+  width: 168px;
+  height: 44px;
+  /* background: #FFFFFF; */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 24px;
+  /* text-align: center;
+  line-height: 44px; */
+  background-image: url(../../assets/icon/maintestbutton2.svg);
+}
 
 @media screen and (min-width: 48rem), screen and (min-height: 48rem) {
   .mainBG{

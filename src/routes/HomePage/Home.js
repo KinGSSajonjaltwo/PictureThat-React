@@ -1,8 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./style.css"
 
+import iaaaa from "../../assets/image/mainPageBG-new.svg"
+
+
 function Home() {
-  
+  let navigate = useNavigate();
   return(
     <div className = "mainBG">
       <div className= "outerCameraFrame">
@@ -11,17 +15,25 @@ function Home() {
         <div className = "camera2"/>
         <div className = "camera3"/>
         <div className = "camera4"/>
+        <div className="mainLogo"/>
 
-
-        <div className="mainLogo"></div>
         <div className = "innerCameraFrame"/>
 
-
+        <div className="mainButtons">
+          <div className="startButton" onClick={() => (navigate("/pocaran"))}/>
+          <br></br>
+          <div className="eventButton"/>
+        </div>
         
         
 
       </div>
     </div>
+    // <>
+    //   <iframe src = {iaaaa} className = "mainBG">
+    //   </iframe>
+
+    // </>
   )
 }
 
