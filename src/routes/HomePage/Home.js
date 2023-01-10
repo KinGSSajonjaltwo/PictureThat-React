@@ -1,8 +1,12 @@
 import React from "react";
+import "./style.css"
 
 function Home() {
+  
   return(
-    <div>Home 페이지</div>
+    <div id = "mainBG">
+      <div></div>
+    </div>
   )
 }
 
