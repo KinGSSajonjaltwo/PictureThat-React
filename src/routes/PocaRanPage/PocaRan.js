@@ -17,9 +17,9 @@ function PocaRan() {
 const PocaRanAppBar = ({page}) => {
   return (
     <div className="ranAppBar">
-      <div className="closeIcon"/>
-      <div className="appBarText">{page}/8</div>
-      <div className="moreIcon"></div>
+      <div className="closeIcon icon"/>
+      <div className="appBarText centerAlign">{page}/8</div>
+      <div className="moreIcon icon"></div>
     </div> 
   )
 }
@@ -27,12 +27,12 @@ const PocaRanAppBar = ({page}) => {
 const PocaRanBody = ({page}) => {
   return (
     <div className="ranBody">
-      <div className="middle">
-        <div className="cardBody"></div>
+      <div className="middle centerAlign">
+        <div className="cardBody centerAlign">123</div>
       </div>
       <div className="bottomMenu">
-        <div className="closeIcon"/>
-        <div className="closeIcon"/>
+        <div className="rotateIcon icon"/>
+        <div className="playIcon icon"/>
       </div>
     </div> 
   )
