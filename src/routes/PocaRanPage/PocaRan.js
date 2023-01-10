@@ -7,9 +7,9 @@ function PocaRan() {
 
   return (
     <div className="entire">
+      <div className="backRec"/>
       <PocaRanAppBar page={page}/>
       <PocaRanBody page={page}/>  
-      <div className="backRec"/>
     </div>
   )  
 }
@@ -27,7 +27,13 @@ const PocaRanAppBar = ({page}) => {
 const PocaRanBody = ({page}) => {
   return (
     <div className="ranBody">
-      12321312312312
+      <div className="middle">
+        <div className="cardBody"></div>
+      </div>
+      <div className="bottomMenu">
+        <div className="closeIcon"/>
+        <div className="closeIcon"/>
+      </div>
     </div> 
   )
 }
