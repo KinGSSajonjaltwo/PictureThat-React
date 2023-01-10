@@ -1,15 +1,31 @@
-#mainBG {
+.mainBG {
   background-image: url(../../assets/image/mainPageBG.svg);
   background-repeat : no-repeat;
   background-position : center;
+  background-size:cover;
   height: 100%;
-
   margin: 0px auto;
+
 }
 
-@media screen and (min-width: 390px), screen and (min-height: 48rem) {
-  #mainBG{
-    width: 390px;
+.outerCameraFrame{
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.camera1{
+  background-image: url(../../assets/icon/camera1.svg);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+
+@media screen and (min-width: 48rem), screen and (min-height: 48rem) {
+  .mainBG{
+    width: 36rem;
   }
 }
 
