@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import "./style.css"
 
 function PocaRan() {
@@ -6,11 +7,23 @@ function PocaRan() {
   const [page, setPage] = useState(0);
 
   return (
-    <div className="entire">
-      <div className="backRec"/>
-      <PocaRanAppBar page={page}/>
-      <PocaRanBody page={page}/>  
-    </div>
+    <DragDropContext>
+      <Droppable droppableId="droppable-1" type="test1">
+      {(provided, snapshot) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+          style={{backgroundColor: snapshot.isDraggingOver ? 'blue' : 'grey'}}>
+          <div className="entire">
+            <div className="backRec"/>
+            <PocaRanAppBar page={page}/>
+            <PocaRanBody page={page}/>  
+            {provided.placeholder}
+          </div>
+        </div>
+      )}
+      </Droppable>;
+    </DragDropContext>
   )  
 }
 
