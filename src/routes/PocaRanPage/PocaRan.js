@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import Cards, { Card } from 'react-swipe-card'
 import "./style.css"
 
 function PocaRan() {
@@ -7,23 +7,11 @@ function PocaRan() {
   const [page, setPage] = useState(0);
 
   return (
-    <DragDropContext>
-      <Droppable droppableId="droppable-1" type="test1">
-      {(provided, snapshot) => (
-        <div
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-          style={{backgroundColor: snapshot.isDraggingOver ? 'blue' : 'grey'}}>
-          <div className="entire">
-            <div className="backRec"/>
-            <PocaRanAppBar page={page}/>
-            <PocaRanBody page={page}/>  
-            {provided.placeholder}
-          </div>
-        </div>
-      )}
-      </Droppable>;
-    </DragDropContext>
+    <div className="entire">
+      <div className="backRec"/>
+      <PocaRanAppBar page={page}/>
+      <PocaRanBody page={page}/>  
+    </div>
   )  
 }
 
@@ -38,10 +26,21 @@ const PocaRanAppBar = ({page}) => {
 }
 
 const PocaRanBody = ({page}) => {
+  const data = ['Alexandre', 'Thomas', 'Lucien']
   return (
     <div className="ranBody">
       <div className="middle centerAlign">
-        <div className="cardBody centerAlign">123</div>
+      <Cards onEnd={() => {}} className='master-root cardBody centerAlign'>
+        {data.map(item => 
+          <Card 
+            onSwipeLeft={() => {}} 
+            onSwipeRight={() => {}}>
+            <h2>{item}</h2>
+          </Card>
+        )}
+      </Cards>
+        {/* <div className="cardBody centerAlign">123</div> */}
+      
       </div>
       <div className="bottomMenu">
         <div className="rotateIcon icon"/>
