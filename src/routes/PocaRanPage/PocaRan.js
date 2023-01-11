@@ -3,6 +3,7 @@ import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
 import { getRandomCardsTest } from "../../components/CardGenerator";
+import { useNavigate } from "react-router-dom";
 
 function PocaRan() {
 
@@ -18,9 +19,10 @@ function PocaRan() {
 }
 
 const PocaRanAppBar = ({page}) => {
+  let navigate = useNavigate();
   return (
     <div className="ranAppBar">
-      <div className="closeIcon icon"/>
+      <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
       <div className="appBarText centerAlign">{page}/8</div>
       <div className="moreIcon icon"></div>
     </div> 
