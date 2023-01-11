@@ -3,7 +3,6 @@ import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
 import { getRandomCardsTest } from "../../components/CardGenerator";
-import ReactCardFlip from "react-card-flip";
 
 function PocaRan() {
 
