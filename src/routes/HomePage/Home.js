@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
 
-import iaaaa from "../../assets/image/mainPageBG-new.svg"
+
 
 
 function Home() {

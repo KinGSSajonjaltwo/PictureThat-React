@@ -1,5 +1,5 @@
 .mainBG {
-  background-image: url(../../assets/image/mainPageBG-new.svg);
+  background-image: url(../../assets/image/mainPageBG4.png);
   background-repeat : no-repeat;
   background-position : center;
   background-size:cover;
@@ -61,12 +61,12 @@
 }
 
 .mainLogo{
-  background-image: url(../../assets/icon/mainLogo.svg);
+  background-image: url(../../assets/icon/mainLogo.png);
   width: 264px;
   height: 113px;
   margin:auto;
   margin-top: 20%;
-  
+  background-size:cover;
 }
 
 .mainButtons{
