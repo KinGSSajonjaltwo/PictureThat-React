@@ -1,3 +1,5 @@
+import { fBase } from "./FBase"
+
 export const getRandomCards = () => {
   return ["까꿍","바운씨 바운씨"]
 }
