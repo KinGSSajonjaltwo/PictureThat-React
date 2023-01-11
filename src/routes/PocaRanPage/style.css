@@ -78,13 +78,24 @@
     z-index: 1;
 }
 
-.cardBody {
-    padding: 10px;
-    height: 70%;
+.baseCard {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.cardsHouse {
+    height: 80%;
     width: 70%;
     box-sizing: border-box;
+    position: relative;
+}
+
+.cardBody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
     background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     z-index: 1;
 }
