@@ -1,6 +1,6 @@
 import React from "react";
 import {fBase} from "./FBase"
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, doc, getDoc } from 'firebase/firestore/lite';
 
 const fdb = getFirestore(fBase);
 
@@ -12,16 +12,43 @@ export const getRandomCardsTest = ()  => {
 
 export const getRandomCards = async () => {
   
-  const memepoca = collection(fdb, 'testCollection');
-  const memesnapshot = await getDocs(memepoca);
-  const memeList = await memesnapshot.docs.map(doc => doc.data());
-  // console.log(memeList);
-  return memeList
+  const memepoca = doc(fdb, 'testCollection', "0fokZmHuAdbIpjS3d5tr").withConverter(cardsConverter);
+  const docSnap = await getDoc(memepoca);
+  if (docSnap.exists()) {
+    // Convert to City object
+    const city = docSnap.data();
+    // Use a City instance method
+    console.log(city.toString());
+  } else {
+    console.log("No such document!");
+  }
+  return docSnap
 }
 
 export const getEventCards = () => {
   return ["BTS", "봉준호", "손흥민", "제이팍"]
 }
 
+class Card {
+  constructor (name, url) {
+      this.name = name;
+      this.url = url;
+  }
+  toString() {
+      return this.name + ', ' + this.url 
+  }
+}
 
 
+const cardsConverter = {
+  toFirestore: (card) => {
+      return {
+          name: card.name,
+          url: card.url,
+          };
+  },
+  fromFirestore: (snapshot, options) => {
+      const data = snapshot.data(options);
+      return new Card(data.name, data.url);
+  }
+};
