@@ -2,11 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
 
-
-
-
 function Home() {
   let navigate = useNavigate();
+
   return(
     <div className = "mainBG">
       <div className= "outerCameraFrame">
@@ -24,9 +22,6 @@ function Home() {
           <br></br>
           <div className="eventButton"/>
         </div>
-        
-        
-
       </div>
     </div>
     // <>
