@@ -2,9 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
 
+import { getRandomCards } from "../../components/CardGenerator";
+
 function Home() {
   let navigate = useNavigate();
-
+  let deccck = getRandomCards();
+  console.log(deccck);
   return(
     <div className = "mainBG">
       <div className= "outerCameraFrame">
