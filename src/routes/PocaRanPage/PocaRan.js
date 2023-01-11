@@ -81,34 +81,54 @@ const PocaRanBody = ({page}) => {
     await childRefs[newIndex].current.restoreCard()
   }
 
-  const printMouse = (m) => {
-    mouseX = m.clientX;
-    mouseY = m.clientY;
-    //console.log(x + ' ' + y);
-    var coor = "마우스 좌표: ( " + mouseX + ", " + mouseY + " )";
-    document.getElementById("txt").innerHTML = coor;
-  }
+  const mouseDownF = (m) => {
+    mouseClickX = m.clientX;
+    mouseClickY = m.clientY;
+  } 
+
+  const mouseUpF = (m) => {
+    var distance = (mouseClickX - m.clientX) ** 2 +
+      (mouseClickY - m.clientY) ** 2;
+    console.log('distance :' + distance);
+
+    if (distance < 50) {
+      document.getElementById("clickId").textContent = distance;
+    }
+  } 
+
+  const touchStartF = (e) => {
+    mouseClickX = e.touches[0].pageX;
+    mouseClickY = e.touches[0].pageY;
+  } 
+
+  const touchEndF = (e) => {
+    var distance = (mouseClickX - e.changedTouches[0].clientX) ** 2 +
+      (mouseClickY - e.changedTouches[0].clientY) ** 2;
+    console.log('distance :' + distance);
+
+    if (distance < 50) {
+      document.getElementById("clickId").textContent = distance;
+    }
+  } 
 
   useEffect(() => {
     var clickInstance = document.getElementById("clickId");
-    clickInstance.addEventListener("mousemove",
-      (m) => {
-          printMouse(m);
-    });
     clickInstance.addEventListener("mousedown",
       (m) => {
-          mouseClickX = mouseX;
-          mouseClickY = mouseY;
+        mouseDownF(m);
     });
     clickInstance.addEventListener("mouseup",
       (m) => {
-          var distance = (mouseClickX - mouseX) ** 2 +
-            (mouseClickY - mouseY) ** 2;
-          console.log('distance :' + distance);
+         mouseUpF(m);
+    });
 
-          if (distance < 50) {
-            clickInstance.textContent = distance;
-          }
+    clickInstance.addEventListener("touchstart",
+      (e) => {
+        touchStartF(e);
+    });
+    clickInstance.addEventListener("touchend",
+      (e) => {
+        touchEndF(e);
     });
   }, [currentIndex]);
 
