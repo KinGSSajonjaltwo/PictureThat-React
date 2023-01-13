@@ -89,6 +89,13 @@
     position: relative;
 }
 
+.flipAni {
+    transition: .4s;
+    transform-style: preserve-3d;
+    perspective: 1100px;
+    backface-visibility: hidden;
+}
+
 .cardBody {
     position: absolute;
     height: 100%;
@@ -98,6 +105,10 @@
     background: #FFFFFF;
     border-radius: 10px;
     z-index: 1;
+}
+
+.flipCard {
+    transform: rotateY(180deg);
 }
 
 .centerAlign {

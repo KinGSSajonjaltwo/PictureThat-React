@@ -13,7 +13,7 @@ function PocaRan() {
     <div className="entire">
       <div className="backRec"/>
       <PocaRanAppBar page={page}/>
-      <PocaRanBody page={page}/>  
+      <PocaRanBody setPage={setPage}/>  
     </div>
   )  
 }
@@ -29,14 +29,13 @@ const PocaRanAppBar = ({page}) => {
   )
 }
 
-const PocaRanBody = ({page}) => {
+const PocaRanBody = ({setPage}) => {
   const datas = getRandomCardsTest();
   const [currentIndex, setCurrentIndex] = useState(datas.length - 1)
   const [lastDirection, setLastDirection] = useState()
-  const [isFrontFlip, setIsForntFlip] = useState(true);
+  const [isFront, setIsFront] = useState(true);
+  const [smallPage, setSmallPage] = useState(9999);
 
-  var mouseX = 0;
-  var mouseY = 0;
   var mouseClickX = 0;
   var mouseClickY = 0;
 
@@ -67,7 +66,7 @@ const PocaRanBody = ({page}) => {
 
   const outOfFrame = (name, idx) => {
     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
-    //currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
   }
 
   const swipe = async (dir) => {
@@ -91,10 +90,9 @@ const PocaRanBody = ({page}) => {
   const mouseUpF = (m) => {
     var distance = (mouseClickX - m.clientX) ** 2 +
       (mouseClickY - m.clientY) ** 2;
-    console.log('distance :' + distance);
 
     if (distance < 50) {
-      document.getElementById("clickId").textContent = distance;
+      setIsFront((recv) => !recv);
     }
   } 
 
@@ -106,33 +104,43 @@ const PocaRanBody = ({page}) => {
   const touchEndF = (e) => {
     var distance = (mouseClickX - e.changedTouches[0].clientX) ** 2 +
       (mouseClickY - e.changedTouches[0].clientY) ** 2;
-    console.log('distance :' + distance);
 
     if (distance < 50) {
-      document.getElementById("clickId").textContent = distance;
+      setIsFront(recv => !recv);
+    } else if (distance > 300) {
+      swipe();
     }
   } 
 
   useEffect(() => {
-    var clickInstance = document.getElementById("clickId");
-    clickInstance.addEventListener("mousedown",
-      (m) => {
-        mouseDownF(m);
-    });
-    clickInstance.addEventListener("mouseup",
-      (m) => {
-         mouseUpF(m);
-    });
+    setPage(8 - currentIndex);
+    setIsFront(true);
+    console.log(smallPage + '1000')
+    if (!canSwipe || smallPage <= currentIndex) return; 
+    var clickInstance = [];
+    setSmallPage(currentIndex);
 
-    clickInstance.addEventListener("touchstart",
-      (e) => {
-        touchStartF(e);
-    });
-    clickInstance.addEventListener("touchend",
-      (e) => {
-        touchEndF(e);
-    });
+    clickInstance[0] = document.getElementById("frontCardId" + currentIndex);
+    clickInstance[1] = document.getElementById("backCardId" + currentIndex);
+
+    for (var i = 0; i < 2; i++) {
+      clickInstance[i].addEventListener("mousedown", mouseDownF);
+      clickInstance[i].addEventListener("mouseup", mouseUpF);
+      clickInstance[i].addEventListener("touchstart", touchStartF);
+      clickInstance[i].addEventListener("touchend", touchEndF);
+    }
   }, [currentIndex]);
+
+  useEffect(() => {
+    console.log(isFront);
+    if (isFront === false) {
+      document.getElementById("frontCardId" + currentIndex).classList.add("flipCard");
+      document.getElementById("backCardId" + currentIndex).classList.remove("flipCard");
+    } else {
+      document.getElementById("frontCardId" + currentIndex).classList.remove("flipCard");
+      document.getElementById("backCardId" + currentIndex).classList.add("flipCard");
+    }
+  }, [isFront, currentIndex]);
 
   return (
     <div className="ranBody">
@@ -141,24 +149,33 @@ const PocaRanBody = ({page}) => {
           <div className="cardBody shadowEffect">I'mmmmm Base Card!!!</div>
           {datas.map((data, index) => (
             index === currentIndex ?
-              <TinderCard 
-                ref={childRefs[index]}
-                className="swipe cardBody centerAlign" 
-                key={data[0]} 
-                onSwipe={(dir) => swiped(dir, data[0], index)}
-                onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                  <div className="cardBody centerAlign shadowEffect" id="clickId" onClick={() => console.log(1)}>
-                    아주 윗면
-                  </div>
-              </TinderCard> : 
+                <TinderCard 
+                  ref={childRefs[index]}
+                  className="swipe cardBody centerAlign" 
+                  key={data[0]} 
+                  onSwipe={(dir) => swiped(dir, data[0], index)}
+                  onCardLeftScreen={() => outOfFrame(data[0], index)}>
+                    <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
+                      아주 윗면
+                    </div>
+                    <div className="cardBody centerAlign shadowEffect flipAni" id={"backCardId" + currentIndex}>
+                      아주 뒷면
+                    </div>
+                </TinderCard> 
+             : 
+            
+
               <TinderCard 
               ref={childRefs[index]}
               className="swipe cardBody centerAlign" 
               key={data[0]} 
               onSwipe={(dir) => swiped(dir, data[0], index)}
               onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                <div className="cardBody centerAlign" onClick={() => console.log(1)}>
-                  옛날면
+                <div className="cardBody centerAlign">
+                  {/* 빈칸 */}
+                </div>
+                <div className="cardBody centerAlign">
+                  {/* 빈칸 */}
                 </div>
             </TinderCard>
           ))}
@@ -169,7 +186,6 @@ const PocaRanBody = ({page}) => {
         <div 
           style={{opacity: !canGoBack && 0.3}} 
           className="rotateIcon icon" onClick={goBack}/>
-        <div id="txt">마우스 좌표: ( 0, 0 )</div>
         <div className="playIcon icon" onClick={swipe}/>
       </div>
     </div> 
