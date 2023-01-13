@@ -107,8 +107,6 @@ const PocaRanBody = ({setPage}) => {
 
     if (distance < 50) {
       setIsFront(recv => !recv);
-    } else if (distance > 300) {
-      swipe();
     }
   } 
 
@@ -186,7 +184,7 @@ const PocaRanBody = ({setPage}) => {
         <div 
           style={{opacity: !canGoBack && 0.3}} 
           className="rotateIcon icon" onClick={goBack}/>
-        <div className="playIcon icon" onClick={swipe}/>
+        <div className="playIcon icon" onClick={() => swipe('right')}/>
       </div>
     </div> 
   )
