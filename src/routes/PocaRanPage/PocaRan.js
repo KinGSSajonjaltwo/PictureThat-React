@@ -154,10 +154,10 @@ const PocaRanBody = ({setPage}) => {
                   onSwipe={(dir) => swiped(dir, data[0], index)}
                   onCardLeftScreen={() => outOfFrame(data[0], index)}>
                     <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
-                      아주 윗면
+                      {data[0]}
                     </div>
                     <div className="cardBody centerAlign shadowEffect flipAni" id={"backCardId" + currentIndex}>
-                      아주 뒷면
+                      <img src={data[1]} width="100" height="50" align="center" border="0" />
                     </div>
                 </TinderCard> 
              : 
