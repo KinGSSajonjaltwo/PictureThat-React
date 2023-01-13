@@ -130,6 +130,7 @@ const PocaRanBody = ({setPage}) => {
   }, [currentIndex]);
 
   useEffect(() => {
+    if (!canSwipe) return; 
     console.log(isFront);
     if (isFront === false) {
       document.getElementById("frontCardId" + currentIndex).classList.add("flipCard");
@@ -156,7 +157,7 @@ const PocaRanBody = ({setPage}) => {
                     <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
                       {data[0]}
                     </div>
-                    <div className="cardBody centerAlign shadowEffect flipAni" id={"backCardId" + currentIndex}>
+                    <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
                       <img src={data[1]} width="100" height="50" align="center" border="0" />
                     </div>
                 </TinderCard> 
@@ -172,12 +173,11 @@ const PocaRanBody = ({setPage}) => {
                 <div className="cardBody centerAlign">
                   {/* 빈칸 */}
                 </div>
-                <div className="cardBody centerAlign">
+                <div className="cardBody centerAlign flipAni flipCard">
                   {/* 빈칸 */}
                 </div>
             </TinderCard>
           ))}
-          {/* <div className="cardbody centerAlign">123</div> */}
         </div>
       </div>
       <div className="bottomMenu">
