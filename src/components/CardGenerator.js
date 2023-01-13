@@ -1,6 +1,6 @@
 import React from "react";
 import {fBase} from "./FBase"
-import { getFirestore, collection, doc, getDoc , getDocs , query, limit,where} from 'firebase/firestore/lite';
+import { getFirestore, collection, doc, getDoc , getDocs , query, limit,where , setDoc, orderBy} from 'firebase/firestore/lite';
 
 const fdb = getFirestore(fBase);
 
@@ -13,16 +13,38 @@ export const getRandomCardsTest = async ()  => {
 
 
 export const getRandomCards = async () => {
+  const collectionSet = ["Classic", "Meme", "Together", "Change"];
+  const collectionSetNum = [6,5,3, 3];
+  let resultDeck  = [];  
   
-  let resultDeck  = [];
+  let rand = Math.floor(Math.random()*collectionSetNum[0]) ;
 
-  const classicCollection = collection(fdb, 'Classic');
-  const testquery =  query(classicCollection , limit(2));
-  const classiccards = await getDocs(testquery);
-  await classiccards.forEach( (doc) => {
-    resultDeck.push( [doc.data().name , doc.data().url[ 10 % (doc.data().url.length ) ] ] )
-  });
+  const cq = query(collection(fdb, collectionSet[0]) , where("id", "<=" , rand ), limit(2));
+  const classicSnapshot = await getDocs(cq);
+  classicSnapshot.forEach((doc) => {
+      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
+  })
+
+  const mq = query(collection(fdb, collectionSet[1]) , where( "id" , "<", 2))
   
+  const memeSnapshot = await getDocs(mq)
+  memeSnapshot.forEach((doc) => {
+      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
+  })
+
+  const tq = query(collection(fdb, collectionSet[2]) , where( "id" , "<", 2))
+  
+  const togetherSnapshot = await getDocs(tq)
+  togetherSnapshot.forEach((doc) => {
+      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
+  })
+
+  const chq = query(collection(fdb, collectionSet[3]) , where( "id" , "<", 2))
+
+  const changeSnapshot = await getDocs(chq)
+  changeSnapshot.forEach((doc) => {
+      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
+  })
 
   return resultDeck
 
@@ -42,9 +64,9 @@ class Card {
   }
 }
 
-const cardsConverter = {
+const cardConverter = {
   fromFirestore: (snapshot, options) => {
       const data = snapshot.data(options);
-      return new Card(data.name, data.url);
+      return new Card(data.name, data.urls);
   }
 };
