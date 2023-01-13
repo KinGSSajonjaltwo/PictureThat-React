@@ -7,7 +7,8 @@ import { getRandomCards } from "../../components/CardGenerator";
 function Home() {
   let navigate = useNavigate();
   let deccck = getRandomCards();
-  console.log(deccck);
+  deccck.then(console.log)
+  // console.log(deccck);
   return(
     <div className = "mainBG">
       <div className= "outerCameraFrame">
