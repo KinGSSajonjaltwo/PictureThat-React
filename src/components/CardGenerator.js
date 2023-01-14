@@ -19,27 +19,27 @@ export const getRandomCards = async () => {
   
   let rand = Math.floor(Math.random()*collectionSetNum[0]) ;
 
-  const cq = query(collection(fdb, collectionSet[0]) , where("id", "<=" , rand ), limit(2));
+  const cq = query(collection(fdb, collectionSet[0]) , where("id", "<" , 3 ));
   const classicSnapshot = await getDocs(cq);
   classicSnapshot.forEach((doc) => {
       resultDeck.push( [doc.data().name, doc.data().urls[0]] )
   })
 
-  const mq = query(collection(fdb, collectionSet[1]) , where( "id" , "<", 2))
+  const mq = query(collection(fdb, collectionSet[1]) , where( "id" , "<", 3));
   
   const memeSnapshot = await getDocs(mq)
   memeSnapshot.forEach((doc) => {
       resultDeck.push( [doc.data().name, doc.data().urls[0]] )
   })
 
-  const tq = query(collection(fdb, collectionSet[2]) , where( "id" , "<", 2))
+  const tq = query(collection(fdb, collectionSet[2]) , where( "id" , "<", 1));
   
   const togetherSnapshot = await getDocs(tq)
   togetherSnapshot.forEach((doc) => {
       resultDeck.push( [doc.data().name, doc.data().urls[0]] )
   })
 
-  const chq = query(collection(fdb, collectionSet[3]) , where( "id" , "<", 2))
+  const chq = query(collection(fdb, collectionSet[3]) , where( "id" , "<", 1));
 
   const changeSnapshot = await getDocs(chq)
   changeSnapshot.forEach((doc) => {
