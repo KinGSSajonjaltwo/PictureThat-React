@@ -3,6 +3,7 @@ import {fBase} from "./FBase"
 import { getFirestore, collection, doc, getDoc , getDocs , query, limit,where , setDoc, orderBy} from 'firebase/firestore/lite';
 
 const fdb = getFirestore(fBase);
+const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
 
 export const getRandomCardsTest = ()  => {
   
@@ -13,60 +14,74 @@ export const getRandomCardsTest = ()  => {
 
 
 export const getRandomCards = async () => {
-  const collectionSet = ["Classic", "Meme", "Together", "Change"];
-  const collectionSetNum = [6,5,3, 3];
-  let resultDeck  = [];  
+  //1. 각 collection 별로 random index 생성
+  //collection별 number of index : Classic(0) : 3", "Meme(1) : 2", "Together(2) : 2", "Change(3) : 1" 
+  //2. read random index document 
+  //3. push to resultDeck in order
+  //순서 :  Classic - Meme - Together - Change - Classic - Together - Classic - Meme 
+
+  const randomIndex = selectCollectionIndex();
   
-  let rand = Math.floor(Math.random()*collectionSetNum[0]) ;
+  const resultDeck = await Promise.all([
+    getCardFromDoc( query(collection(fdb, collectionNameSet[0]) , where("id", "==" , randomIndex[0][0]))),
+    getCardFromDoc( query(collection(fdb, collectionNameSet[1]) , where("id", "==" , randomIndex[1][0]))),
+    getCardFromDoc( query(collection(fdb, collectionNameSet[2]) , where("id", "==" , randomIndex[2][0]))),   
+    getCardFromDoc( query(collection(fdb, collectionNameSet[3]) , where("id", "==" , randomIndex[3][0]))),
+    getCardFromDoc( query(collection(fdb, collectionNameSet[0]) , where("id", "==" , randomIndex[0][1]))), 
+    getCardFromDoc( query(collection(fdb, collectionNameSet[2]) , where("id", "==" , randomIndex[2][1]))), 
+    getCardFromDoc( query(collection(fdb, collectionNameSet[0]) , where("id", "==" , randomIndex[0][2]))), 
+    getCardFromDoc( query(collection(fdb, collectionNameSet[1]) , where("id", "==" , randomIndex[1][1]))) 
+  ])
 
-  const cq = query(collection(fdb, collectionSet[0]) , where("id", "<" , 3 ));
-  const classicSnapshot = await getDocs(cq);
-  classicSnapshot.forEach((doc) => {
-      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
-  })
-
-  const mq = query(collection(fdb, collectionSet[1]) , where( "id" , "<", 3));
-  
-  const memeSnapshot = await getDocs(mq)
-  memeSnapshot.forEach((doc) => {
-      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
-  })
-
-  const tq = query(collection(fdb, collectionSet[2]) , where( "id" , "<", 1));
-  
-  const togetherSnapshot = await getDocs(tq)
-  togetherSnapshot.forEach((doc) => {
-      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
-  })
-
-  const chq = query(collection(fdb, collectionSet[3]) , where( "id" , "<", 1));
-
-  const changeSnapshot = await getDocs(chq)
-  changeSnapshot.forEach((doc) => {
-      resultDeck.push( [doc.data().name, doc.data().urls[0]] )
-  })
 
   return resultDeck
 
 }
 
+const getCardFromDoc = async ( docQuery  ) => {
+  
+  const cardDoc = await getDocs(docQuery);
+  let card = [,];
+  cardDoc.forEach((doc) => {
+    card[0] = doc.data().name;
+    card[1] = doc.data().urls[ Math.floor(Math.random() * ( doc.data().urls.length - 1) ) ]
+  });
+
+  return card
+}
+
+
+const selectCollectionIndex = () => {
+  //"Classic : 3", "Meme : 2", "Together : 2", "Change : 1" 
+  let randomCollectionsIndexArray = [ [], [] , [] ,[] ];
+  const collectionSetNum = [6,5,3, 4];
+
+  randomCollectionsIndexArray[0] = selectIndex(collectionSetNum[0], 3);
+  randomCollectionsIndexArray[1] = selectIndex(collectionSetNum[1], 2);
+  randomCollectionsIndexArray[2] = selectIndex(collectionSetNum[2], 2);
+  randomCollectionsIndexArray[3] = selectIndex(collectionSetNum[3], 1);
+  
+  return randomCollectionsIndexArray;
+}
+
+
+const selectIndex = (totalIndex, selectingNumber) => {
+  let randomIndexArray = []
+  for (let i=0; i<selectingNumber; i++) { //check if there is any duplicate index
+    const randomNum = Math.floor(Math.random() * totalIndex)
+    if (randomIndexArray.indexOf(randomNum) === -1) {
+      randomIndexArray.push(randomNum)
+    } else { //if the randomNum is already in the array retry
+      i--
+    }
+  }
+  return randomIndexArray
+}
+
+
+
 export const getEventCards = () => {
   return ["BTS", "봉준호", "손흥민", "제이팍"]
 }
 
-class Card {
-  constructor (name, urls) {
-      this.name = name;
-      this.url = urls[39%urls.length];
-  }
-  toArray() {
-      return [this.name, this.url ]
-  }
-}
 
-const cardConverter = {
-  fromFirestore: (snapshot, options) => {
-      const data = snapshot.data(options);
-      return new Card(data.name, data.urls);
-  }
-};
