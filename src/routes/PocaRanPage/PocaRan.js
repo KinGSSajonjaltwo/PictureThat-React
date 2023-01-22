@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
-import { getRandomCardsTest } from "../../components/CardGenerator";
+import { getRandomCards } from "../../components/CardGenerator";
 import { useNavigate } from "react-router-dom";
 
 function PocaRan() {
@@ -113,7 +113,7 @@ const PocaRanBody = ({setPage}) => {
 
   useEffect(() => {
     async function init() {
-      var tmp = await getRandomCardsTest();
+      var tmp = await getRandomCards();
       if (first === true) {
         setFirst(false);
         setDatas(tmp);
