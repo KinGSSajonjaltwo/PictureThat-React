@@ -30,7 +30,8 @@ const PocaRanAppBar = ({page}) => {
 }
 
 const PocaRanBody = ({setPage}) => {
-  const datas = getRandomCardsTest();
+  const [datas, setDatas] = useState([['1', '2'],['3', '3'],['4', '4'],['5', '5'],['6', '6'],['7', '7'],['8', '8'],['9', '9']])
+  const [first, setFirst] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(datas.length - 1)
   const [lastDirection, setLastDirection] = useState()
   const [isFront, setIsFront] = useState(true);
@@ -109,6 +110,17 @@ const PocaRanBody = ({setPage}) => {
       setIsFront(recv => !recv);
     }
   } 
+
+  useEffect(() => {
+    async function init() {
+      var tmp = await getRandomCardsTest();
+      if (first === true) {
+        setFirst(false);
+        setDatas(tmp);
+      }
+    }
+    init();
+  }, [])
 
   useEffect(() => {
     setPage(8 - currentIndex);
