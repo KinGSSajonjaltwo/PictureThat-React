@@ -170,7 +170,7 @@ const PocaRanBody = ({setPage}) => {
                       첫페이지 입니다
                     </div>
                     <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
-                      <img src={data[1]} width="100" height="50" align="center" border="0" />
+                    <img className = "backCardImg" src={data[1]} />
                     </div>
                 </TinderCard> 
                 : // 첫 페이지가 아닌 경우
@@ -184,7 +184,7 @@ const PocaRanBody = ({setPage}) => {
                         {data[0]}
                       </div>
                       <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
-                        <img src={data[1]} width="100" height="50" align="center" border="0" />
+                        <img className = "backCardImg" src={data[1]} />
                       </div>
                   </TinderCard> 
                 )
