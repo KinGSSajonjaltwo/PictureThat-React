@@ -1,1 +1,14 @@
-/* 가보자 */
+.FirstCardContainer{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.FirstCardTitle{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%,0);
+  font-size: 22px;
+}
