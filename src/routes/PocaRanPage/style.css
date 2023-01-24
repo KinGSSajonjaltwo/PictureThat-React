@@ -140,3 +140,9 @@
       width: 36rem;
     }
   } */
+
+.fonttest {
+    font-family: 'East Sea Dokdo', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+}

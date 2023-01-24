@@ -60,7 +60,6 @@ const PocaRanBody = ({setPage}) => {
   const canSwipe = currentIndex >= 0
 
   const swiped = (direction, nameToDelete, index) => {
-    console.log('swipe')
     setLastDirection(direction)
     updateCurrentIndex(index - 1);
   }
@@ -126,7 +125,6 @@ const PocaRanBody = ({setPage}) => {
   useEffect(() => {
     setPage(8 - currentIndex);
     setIsFront(true);
-    console.log(smallPage + '1000')
     if (!canSwipe || smallPage <= currentIndex) return; 
     var clickInstance = [];
     setSmallPage(currentIndex);
@@ -144,7 +142,6 @@ const PocaRanBody = ({setPage}) => {
 
   useEffect(() => {
     if (!canSwipe) return; 
-    console.log(isFront);
     if (isFront === false) {
       document.getElementById("frontCardId" + currentIndex).classList.add("flipCard");
       document.getElementById("backCardId" + currentIndex).classList.remove("flipCard");
@@ -154,7 +151,6 @@ const PocaRanBody = ({setPage}) => {
     }
   }, [isFront, currentIndex]);
 
-  console.log(currentIndex);
   return (
     <div className="ranBody">
       <div className="middle centerAlign">
@@ -184,7 +180,7 @@ const PocaRanBody = ({setPage}) => {
                     key={data[0]} 
                     onSwipe={(dir) => swiped(dir, data[0], index)}
                     onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                      <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
+                      <div className="cardBody centerAlign shadowEffect flipAni fonttest" id={"frontCardId" + currentIndex}>
                         {data[0]}
                       </div>
                       <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
