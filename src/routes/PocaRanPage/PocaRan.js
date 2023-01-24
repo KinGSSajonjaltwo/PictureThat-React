@@ -42,6 +42,7 @@ const PocaRanBody = ({setPage}) => {
   const [lastDirection, setLastDirection] = useState()
   const [isFront, setIsFront] = useState(true);
   const [smallPage, setSmallPage] = useState(9999);
+  let navigate = useNavigate();
 
   var mouseClickX = 0;
   var mouseClickY = 0;
@@ -222,7 +223,7 @@ const PocaRanBody = ({setPage}) => {
         {
           canSwipe 
           ? (<div className="playIcon icon" onClick={() => swipe('right')}/>)
-          : (<div className="homeIcon icon" onClick={() => {}}/>)
+          : (<div className="homeIcon icon" onClick={() => {navigate("/")}}/>)
         }
       </div>
     </div> 
