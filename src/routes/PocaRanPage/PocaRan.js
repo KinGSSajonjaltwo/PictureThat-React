@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
-import { getRandomCards } from "../../components/CardGenerator";
+import { getRandomCardsTest } from "../../components/CardGenerator";
 import { useNavigate } from "react-router-dom";
 
 function PocaRan() {
@@ -30,7 +30,7 @@ const PocaRanAppBar = ({page}) => {
 }
 
 const PocaRanBody = ({setPage}) => {
-  const [datas, setDatas] = useState([['1', '2'],['3', '3'],['4', '4'],['5', '5'],['6', '6'],['7', '7'],['8', '8'],['9', '9']])
+  const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5'],['6', '6'],['7', '7'],['8', '8'],['9','9']])
   const [first, setFirst] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(datas.length - 1)
   const [lastDirection, setLastDirection] = useState()
@@ -113,9 +113,10 @@ const PocaRanBody = ({setPage}) => {
 
   useEffect(() => {
     async function init() {
-      var tmp = await getRandomCards();
+      var tmp = await getRandomCardsTest();
       if (first === true) {
         setFirst(false);
+        tmp.push(['0','0']);
         setDatas(tmp);
       }
     }
@@ -153,6 +154,7 @@ const PocaRanBody = ({setPage}) => {
     }
   }, [isFront, currentIndex]);
 
+  console.log(currentIndex);
   return (
     <div className="ranBody">
       <div className="middle centerAlign">
@@ -160,22 +162,37 @@ const PocaRanBody = ({setPage}) => {
           <div className="cardBody shadowEffect">I'mmmmm Base Card!!!</div>
           {datas.map((data, index) => (
             index === currentIndex ?
-                <TinderCard 
+                (index === 8 ?
+                  // 첫 페이지인 경우
+                  <TinderCard 
                   ref={childRefs[index]}
                   className="swipe cardBody centerAlign" 
                   key={data[0]} 
                   onSwipe={(dir) => swiped(dir, data[0], index)}
                   onCardLeftScreen={() => outOfFrame(data[0], index)}>
                     <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
-                      {data[0]}
+                      첫페이지 입니다
                     </div>
                     <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
                       <img src={data[1]} width="100" height="50" align="center" border="0" />
                     </div>
                 </TinderCard> 
+                : // 첫 페이지가 아닌 경우
+                  <TinderCard 
+                    ref={childRefs[index]}
+                    className="swipe cardBody centerAlign" 
+                    key={data[0]} 
+                    onSwipe={(dir) => swiped(dir, data[0], index)}
+                    onCardLeftScreen={() => outOfFrame(data[0], index)}>
+                      <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
+                        {data[0]}
+                      </div>
+                      <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
+                        <img src={data[1]} width="100" height="50" align="center" border="0" />
+                      </div>
+                  </TinderCard> 
+                )
              : 
-            
-
               <TinderCard 
               ref={childRefs[index]}
               className="swipe cardBody centerAlign" 
