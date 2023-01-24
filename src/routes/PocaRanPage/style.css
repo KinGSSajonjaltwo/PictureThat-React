@@ -12,6 +12,8 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+    margin: 0px auto;
+    transform: unset !important;
 }
 
 .backRec {
@@ -132,3 +134,9 @@
     width: 25px;
     height: 25px;
 }
+
+@media screen and (min-width: 48rem), screen and (min-height: 48rem) {
+    .entire{
+      width: 36rem;
+    }
+  }
