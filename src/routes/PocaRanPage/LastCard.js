@@ -13,6 +13,14 @@ export const LastCard = (datas) => {
     return tmpText;
   }
 
+  const copyEvent = () => {
+      navigator.clipboard.writeText(getText())
+      .then(function () {
+        alert('URL 복사가 완료되었습니다.')
+      })
+  }
+  
+
   return (
     <div className="cardBody centerAlign shadowEffect">
       <div className="backCardImg flexGrow flexColumn">
@@ -30,8 +38,9 @@ export const LastCard = (datas) => {
         </div>
         <div className="centerAlign"><hr/></div>
         <div className="bottomSize centerAlign">
-          <button className="downButtom centerAlign shadowEffect font500" text={getText()} onCopy={() => alert("클립보드에 복사되었습니다.")}>
-              키워드 화면
+          <button className="downButtom centerAlign shadowEffect font500" text={getText()} onClick={() => 
+            copyEvent()}>
+              키워드 화면 
           </button>
         </div>
       </div>

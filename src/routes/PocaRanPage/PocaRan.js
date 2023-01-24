@@ -161,7 +161,7 @@ const PocaRanBody = ({setPage}) => {
     <div className="flexColumn">
       <div className="flexGrow centerAlign">
         <div className="cardsHouse">
-          {currentIndex === -1 && <LastCard datas={datas}/>}
+          {currentIndex <= 0 && <LastCard datas={datas}/>}
           {datas.map((data, index) => (
             index === currentIndex ?
                 (index === 8 ?
