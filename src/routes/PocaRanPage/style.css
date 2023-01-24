@@ -1,4 +1,4 @@
-.ranBody {
+.flexColumn {
     flex-grow: 1;
 
     display: flex;
@@ -135,6 +135,11 @@
     align-items: center;
 }
 
+.middleAlign {
+    align-items: center;
+    display: flex;
+}
+
 .rotateIcon {
     background-image: url(../../assets/icon/Rotate.svg);
 }
@@ -152,7 +157,7 @@
 
 .fontText {
     font-family: 'Noto Sans KR', sans-serif;
-    color: #595959;
+    color: #000000;
     transition: none;
 }
 

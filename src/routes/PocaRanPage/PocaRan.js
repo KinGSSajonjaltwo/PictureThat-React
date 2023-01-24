@@ -155,7 +155,7 @@ const PocaRanBody = ({setPage}) => {
   }, [isFront, currentIndex]);
 
   return (
-    <div className="ranBody">
+    <div className="flexColumn">
       <div className="middle centerAlign">
         <div className="cardsHouse">
           <LastCard/>

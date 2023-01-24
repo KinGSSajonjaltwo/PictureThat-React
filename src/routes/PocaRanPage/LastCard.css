@@ -1,1 +1,26 @@
 /* 가보자 */
+
+.titleSize {
+    height: 20%;
+}
+
+.keywordSize {
+    height: 50%;
+}
+
+.bottomSize {
+    height: 30%;
+}
+
+.downButtom {
+    height: 30%;
+    width: 70%;
+    background: #EFEEFF;
+    border-radius: 10px;
+}
+
+hr {
+    border: 0px;
+    width: 80%;
+    border-top: 1px solid #D3D3D3
+}
