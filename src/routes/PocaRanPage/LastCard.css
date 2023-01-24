@@ -2,8 +2,9 @@
 
 .titleSize {
     height: 20%;
-    margin-top: 5%
-
+    margin-top: 5%;
+    font-size: 22px;
+    transition: none;
 }
 
 .keywordSize {
