@@ -6,8 +6,8 @@ export const LastCard = (datas) =>{
   console.log(datas);
   return (
     <div className="cardBody centerAlign shadowEffect">
-      <div className="backCardImg flexGrow fontText flexColumn">
-        <div className="fontBig titleSize centerAlign">
+      <div className="backCardImg flexGrow flexColumn">
+        <div className="fontBig titleSize centerAlign font500">
           오늘의 포즈
         </div>
         <div className="keywordSize centerAlign">
@@ -19,7 +19,7 @@ export const LastCard = (datas) =>{
         </div>
         <div className="centerAlign"><hr/></div>
         <div className="bottomSize centerAlign">
-          <div className="downButtom centerAlign shadowEffect">
+          <div className="downButtom centerAlign shadowEffect font500">
             키워드 화면
           </div>
         </div>
