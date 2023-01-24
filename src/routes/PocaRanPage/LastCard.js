@@ -11,11 +11,13 @@ export const LastCard = (datas) =>{
           오늘의 포즈
         </div>
         <div className="keywordSize centerAlign">
-          <div className="gridBox smallBox centerAlign">
-            {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
-              <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
-            ))}
-         </div>
+          <div className="smallBox centerAlign">
+            <div className="blockBox">
+              {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
+                <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="centerAlign"><hr/></div>
         <div className="bottomSize centerAlign">
