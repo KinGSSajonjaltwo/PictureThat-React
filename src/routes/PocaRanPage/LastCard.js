@@ -72,7 +72,7 @@ export const LastCard = (datas) => {
         <div className="bottomSize centerAlign">
           <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
             doCopy(getText())}>
-              키워드 화면 
+              클립보드 복사
           </button>
         </div>
       </div>
