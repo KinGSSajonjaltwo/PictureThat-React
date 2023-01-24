@@ -4,6 +4,7 @@
   background-position : center;
   background-size:cover;
   height: 100%;
+  /* width: 100%; */
   margin: 0px auto;
   filter: blur(0);
   transform: unset !important;
@@ -101,9 +102,9 @@
   background-image: url(../../assets/icon/maintestbutton2.svg);
 }
 
-@media screen and (min-width: 48rem), screen and (min-height: 48rem) {
+/* @media screen and (min-width: 48rem), screen and (min-height: 48rem) {
   .mainBG{
     width: 36rem;
   }
-}
+} */
 
