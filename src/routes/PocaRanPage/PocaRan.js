@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
-import { getRandomCardsTest } from "../../components/CardGenerator";
+import { getRandomCards } from "../../components/CardGenerator";
 import { useNavigate } from "react-router-dom";
 
 function PocaRan() {
@@ -26,6 +26,14 @@ const PocaRanAppBar = ({page}) => {
       <div className="appBarText centerAlign">{page}/8</div>
       <div className="moreIcon icon"></div>
     </div> 
+  )
+}
+
+const LastCard = () =>{
+  return (
+    
+    <div className="cardBody shadowEffect">I'mmmmm Base Card!!!</div>
+
   )
 }
 
@@ -112,7 +120,7 @@ const PocaRanBody = ({setPage}) => {
 
   useEffect(() => {
     async function init() {
-      var tmp = await getRandomCardsTest();
+      var tmp = await getRandomCards();
       if (first === true) {
         setFirst(false);
         tmp.push(['0','0']);
@@ -155,7 +163,7 @@ const PocaRanBody = ({setPage}) => {
     <div className="ranBody">
       <div className="middle centerAlign">
         <div className="cardsHouse">
-          <div className="cardBody shadowEffect">I'mmmmm Base Card!!!</div>
+          <LastCard/>
           {datas.map((data, index) => (
             index === currentIndex ?
                 (index === 8 ?
