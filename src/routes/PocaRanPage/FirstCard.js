@@ -1,9 +1,12 @@
 import "./style.css"
+import "./FirstCard.css"
 
 export const FirstCard = () =>{
   return (
     
-    <div>첫번째 카아드</div>
+    <div className="cardImageContainer middleAlign fontText">
+        안내사항
+    </div>
 
   )
 }
