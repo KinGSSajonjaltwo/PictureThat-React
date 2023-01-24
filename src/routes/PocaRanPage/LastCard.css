@@ -1,15 +1,21 @@
 /* 가보자 */
 
 .titleSize {
-    height: 20%;
+    height: 10%;
+    margin-top: 10%
 }
 
 .keywordSize {
     height: 55%;
+    margin-bottom: 10%
 }
 
 .bottomSize {
     height: 25%;
+}
+
+.smallBox {
+    width: 45%;
 }
 
 .downButtom {
@@ -23,4 +29,16 @@ hr {
     border: 0px;
     width: 80%;
     border-top: 1px solid #D3D3D3
+}
+
+.gridBox {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.keywordText {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #7a7a7a;
+    line-height: 40px;
+    transition: none;
 }

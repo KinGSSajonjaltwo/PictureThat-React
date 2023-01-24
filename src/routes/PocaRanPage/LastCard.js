@@ -1,7 +1,9 @@
 import "./style.css"
 import "./LastCard.css"
+import React, { useState } from "react";
 
-export const LastCard = () =>{
+export const LastCard = (datas) =>{
+  console.log(datas);
   return (
     <div className="cardBody centerAlign shadowEffect">
       <div className="backCardImg flexGrow fontText flexColumn">
@@ -9,7 +11,11 @@ export const LastCard = () =>{
           오늘의 포즈
         </div>
         <div className="keywordSize centerAlign">
-          123
+          <div className="gridBox smallBox centerAlign">
+            {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
+              <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
+            ))}
+         </div>
         </div>
         <div className="centerAlign"><hr/></div>
         <div className="bottomSize centerAlign">
