@@ -156,7 +156,7 @@ const PocaRanBody = ({setPage}) => {
 
   return (
     <div className="flexColumn">
-      <div className="middle centerAlign">
+      <div className="flexGrow centerAlign">
         <div className="cardsHouse">
           <LastCard/>
           {datas.map((data, index) => (

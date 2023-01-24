@@ -64,9 +64,8 @@
     color: #595959;
 }
  
-.middle {
+.flexGrow {
     flex-grow: 1;
-    margin-top: 20px;
 }
 
 .bottomMenu {
