@@ -4,6 +4,8 @@ import "./style.css"
 import "../../components/CardGenerator";
 import { getRandomCards } from "../../components/CardGenerator";
 import { useNavigate } from "react-router-dom";
+import { LastCard } from "./LastCard";
+import { FirstCard } from "./FirstCard";
 
 function PocaRan() {
 
@@ -29,13 +31,6 @@ const PocaRanAppBar = ({page}) => {
   )
 }
 
-const LastCard = () =>{
-  return (
-    
-    <div className="cardBody shadowEffect">I'mmmmm Base Card!!!</div>
-
-  )
-}
 
 const PocaRanBody = ({setPage}) => {
   const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5'],['6', '6'],['7', '7'],['8', '8'],['9','9']])
@@ -175,7 +170,7 @@ const PocaRanBody = ({setPage}) => {
                   onSwipe={(dir) => swiped(dir, data[0], index)}
                   onCardLeftScreen={() => outOfFrame(data[0], index)}>
                     <div className="cardBody centerAlign shadowEffect flipAni fontText fontBig" id={"frontCardId" + currentIndex}>
-                      첫페이지 입니다
+                      <FirstCard/>
                     </div>
                     <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
                       <div className="cardImageContainer">
