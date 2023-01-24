@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8b913c50.css",
+    "main.js": "/static/js/main.7926a52d.js",
+    "static/media/mainPageBG4.png": "/static/media/mainPageBG4.2f73bc377acefdcd55aa.png",
+    "static/media/mainLogo.png": "/static/media/mainLogo.52cc11e2fb7da4303831.png",
+    "static/media/Rotate.svg": "/static/media/Rotate.fe303f4439ce40d4c509.svg",
+    "static/media/maintestbutton2.svg": "/static/media/maintestbutton2.855804d37d80da17e5d3.svg",
+    "static/media/maintestbutton1.svg": "/static/media/maintestbutton1.8e784f557e51bf1b6ebb.svg",
+    "static/media/Cross.svg": "/static/media/Cross.6ec1ec1b997476789219.svg",
+    "static/media/camera4.svg": "/static/media/camera4.c3d80bb05ff53a6b55ae.svg",
+    "static/media/camera3.svg": "/static/media/camera3.0c37159829f4702c96fb.svg",
+    "static/media/camera2.svg": "/static/media/camera2.abf6fb8b7a176574b9fc.svg",
+    "static/media/camera1.svg": "/static/media/camera1.757e9a3887f2b5d03d64.svg",
+    "index.html": "/index.html",
+    "static/media/More.svg": "/static/media/More.684d3785d0917cb54bf5.svg",
+    "static/media/Play.svg": "/static/media/Play.95f0d878b14d72b52a1c.svg",
+    "main.8b913c50.css.map": "/static/css/main.8b913c50.css.map",
+    "main.7926a52d.js.map": "/static/js/main.7926a52d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b913c50.css",
+    "static/js/main.7926a52d.js"
+  ]
+}
