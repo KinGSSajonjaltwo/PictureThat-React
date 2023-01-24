@@ -147,6 +147,10 @@
     background-image: url(../../assets/icon/Play.svg);
 }
 
+.homeIcon {
+    background-image: url(../../assets/icon/Home.svg);
+}
+
 .icon {
     background-repeat: no-repeat;
     background-position: center;

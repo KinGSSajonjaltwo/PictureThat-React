@@ -25,7 +25,10 @@ const PocaRanAppBar = ({page}) => {
   return (
     <div className="ranAppBar">
       <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
-      <div className="appBarText centerAlign font400">{page}/8</div>
+      {
+        page !== 9
+        && (<div className="appBarText centerAlign font400">{page}/8</div>)
+      }
       <div className="moreIcon icon"></div>
     </div> 
   )
@@ -216,7 +219,11 @@ const PocaRanBody = ({setPage}) => {
         <div 
           style={{opacity: !canGoBack && 0.3}} 
           className="rotateIcon icon" onClick={goBack}/>
-        <div className="playIcon icon" onClick={() => swipe('right')}/>
+        {
+          canSwipe 
+          ? (<div className="playIcon icon" onClick={() => swipe('right')}/>)
+          : (<div className="homeIcon icon" onClick={() => {}}/>)
+        }
       </div>
     </div> 
   )
