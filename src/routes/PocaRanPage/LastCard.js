@@ -1,9 +1,20 @@
 import "./style.css"
 import "./LastCard.css"
 import React, { useState } from "react";
+import {CopyToClipboard} from "react-copy-to-clipboard/src";
+import { useEffect } from "react";
 
-export const LastCard = (datas) =>{
-  console.log(datas);
+export const LastCard = (datas) => {
+
+  const getText = () => {
+    var tmpText = '';
+    datas['datas'].slice(0, 8).reverse().forEach((element, index) => {
+      tmpText += (index + 1) + '. ' + element[0] + '\n';
+    });
+    console.log(tmpText);
+    return tmpText;
+  }
+
   return (
     <div className="cardBody centerAlign shadowEffect">
       <div className="backCardImg flexGrow flexColumn">
@@ -21,9 +32,11 @@ export const LastCard = (datas) =>{
         </div>
         <div className="centerAlign"><hr/></div>
         <div className="bottomSize centerAlign">
-          <div className="downButtom centerAlign shadowEffect font500">
-            키워드 화면
-          </div>
+          <CopyToClipboard className="downButtom centerAlign shadowEffect font500" text={getText()} onCopy={() => alert("클립보드에 복사되었습니다.")}>
+            <button>
+              키워드 화면
+            </button>
+          </CopyToClipboard>
         </div>
       </div>
     </div>

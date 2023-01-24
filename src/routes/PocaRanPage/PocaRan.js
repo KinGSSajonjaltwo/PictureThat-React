@@ -72,7 +72,6 @@ const PocaRanBody = ({setPage}) => {
   }
 
   const outOfFrame = (name, idx) => {
-    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
   }
 
@@ -162,7 +161,7 @@ const PocaRanBody = ({setPage}) => {
     <div className="flexColumn">
       <div className="flexGrow centerAlign">
         <div className="cardsHouse">
-          <LastCard datas={datas}/>
+          {currentIndex === -1 && <LastCard datas={datas}/>}
           {datas.map((data, index) => (
             index === currentIndex ?
                 (index === 8 ?
