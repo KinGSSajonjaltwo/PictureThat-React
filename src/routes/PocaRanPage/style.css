@@ -146,15 +146,13 @@
     height: 25px;
 }
 
-/* @media screen and (min-width: 48rem), screen and (min-height: 48rem) and (orientation: landscape) {
-    .entire{
-      width: 36rem;
-    }
-  } */
+.fontText {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #595959;
+    transition: none;
+}
 
-.fonttest {
-    font-family: 'East Sea Dokdo', sans-serif;
-    font-weight: bold;
+.fontBig {
     font-size: 2em;
     transition: none;
 }

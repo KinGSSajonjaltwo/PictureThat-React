@@ -23,7 +23,7 @@ const PocaRanAppBar = ({page}) => {
   return (
     <div className="ranAppBar">
       <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
-      <div className="appBarText centerAlign">{page}/8</div>
+      <div className="appBarText centerAlign fontText">{page}/8</div>
       <div className="moreIcon icon"></div>
     </div> 
   )
@@ -174,7 +174,7 @@ const PocaRanBody = ({setPage}) => {
                   key={data[0]} 
                   onSwipe={(dir) => swiped(dir, data[0], index)}
                   onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                    <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
+                    <div className="cardBody centerAlign shadowEffect flipAni fontText fontBig" id={"frontCardId" + currentIndex}>
                       첫페이지 입니다
                     </div>
                     <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
@@ -188,7 +188,7 @@ const PocaRanBody = ({setPage}) => {
                     key={data[0]} 
                     onSwipe={(dir) => swiped(dir, data[0], index)}
                     onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                      <div className="cardBody centerAlign shadowEffect flipAni fonttest" id={"frontCardId" + currentIndex}>
+                      <div className="cardBody centerAlign shadowEffect flipAni fontText fontBig" id={"frontCardId" + currentIndex}>
                         {data[0]}
                       </div>
                       <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
