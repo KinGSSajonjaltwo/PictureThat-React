@@ -20,7 +20,7 @@ export const getRandomCards = async () => {
   //3. push to resultDeck in order
   //순서 :  Classic - Meme - Together - Change - Classic - Together - Classic - Meme 
 
-  const randomIndex = selectCollectionIndex();
+  const randomIndex = await selectCollectionIndex();
   
   const resultDeck = await Promise.all([
     getCardFromDoc( query(collection(fdb, collectionNameSet[0]) , where("id", "==" , randomIndex[0][0]))),
@@ -44,17 +44,31 @@ const getCardFromDoc = async ( docQuery  ) => {
   let card = [,];
   cardDoc.forEach((doc) => {
     card[0] = doc.data().name;
-    card[1] = doc.data().urls[ Math.floor(Math.random() * ( doc.data().urls.length - 1) ) ]
+    card[1] = doc.data().urls[ Math.floor(Math.random() * ( doc.data().urls.length) ) ]
   });
 
   return card
 }
 
+const getCollectionLengths = async () => {
+  
+  const docRef = doc(fdb, "constants", "CollectionLengths");
+  const docSnap = await getDoc(docRef);
+  let collectionSetNum = [, , ,];
 
-const selectCollectionIndex = () => {
+  collectionSetNum[0] = await docSnap.data().lengths[0];
+  collectionSetNum[1] = await docSnap.data().lengths[1];
+  collectionSetNum[2] = await docSnap.data().lengths[2];
+  collectionSetNum[3] = await docSnap.data().lengths[3];
+
+  return collectionSetNum
+  
+}
+
+const selectCollectionIndex = async () => {
   //"Classic : 3", "Meme : 2", "Together : 2", "Change : 1" 
   let randomCollectionsIndexArray = [ [], [] , [] ,[] ];
-  const collectionSetNum = [6,5,3, 4];
+  const collectionSetNum = await getCollectionLengths();
 
   randomCollectionsIndexArray[0] = selectIndex(collectionSetNum[0], 3);
   randomCollectionsIndexArray[1] = selectIndex(collectionSetNum[1], 2);
