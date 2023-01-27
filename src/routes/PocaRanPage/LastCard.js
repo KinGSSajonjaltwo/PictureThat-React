@@ -9,7 +9,6 @@ export const LastCard = (datas) => {
     datas['datas'].slice(0, 8).reverse().forEach((element, index) => {
       tmpText += (index + 1) + '. ' + element[0] + '\n';
     });
-    console.log(tmpText);
     return tmpText;
   }
 
