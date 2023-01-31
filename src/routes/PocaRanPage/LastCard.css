@@ -8,8 +8,7 @@
 }
 
 .keywordSize {
-    height: 55%;
-    margin-bottom: 10%
+    height: 75%;
 }
 
 .bottomSize {
@@ -18,6 +17,20 @@
 
 .smallBox {
     width: 70%;
+}
+
+.copySpace {
+    height: 90%;
+    width: 90%;
+}
+
+.pictureFrame {
+    background-image: url(../../assets/image/pictureframe.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
 }
 
 .downButtom {

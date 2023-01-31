@@ -2,6 +2,7 @@ import "./style.css"
 import "./LastCard.css"
 import React, { useState } from "react";
 import html2canvas from "html2canvas";
+import {jQuery} from "jquery";
 
 export const LastCard = (datas) => {
 
@@ -14,33 +15,43 @@ export const LastCard = (datas) => {
   }
 
   const doCopy = () => {
-    html2canvas(document.querySelector("#copy_space")).then(function(canvas){
-      if (navigator.msSaveBlob) {
-        var blob = canvas.msToBlob(); 
-        return navigator.msSaveBlob(blob, 'test.jpg'); 
-      } else { 
-        var el = document.createElement("a");
-        el.href = canvas.toDataURL("image/jpeg");
-        el.download = 'test.jpg';
-        el.click();
-      }
-    })
+    var ELEMENT = jQuery("#ELEMENT");
+    console.log('1');
+
+    //get element width and height
+    var w = ELEMENT.width();
+    var h = ELEMENT.height();
+
+    //scale up your element
+    ELEMENT.css({
+      'transform': 'scale(3)',
+      '-ms-transform': 'scale(3)',
+      '-webkit-transform': 'scale(3)' });
+
+      //run html2canvas
+      html2canvas(ELEMENT, {
+        onrendered: function(canvas) {
+          html2canvas(document.querySelector("#copy_space")).then(function(canvas){
+            if (navigator.msSaveBlob) {
+              var blob = canvas.msToBlob(); 
+              return navigator.msSaveBlob(blob, 'test.jpg'); 
+            } else { 
+              var el = document.createElement("a");
+              el.href = canvas.toDataURL("image/jpeg");
+              el.download = 'test.jpg';
+              el.click();
+            }
+          })
+    });
   };
   
 
   return (
     <div className="cardBody centerAlign shadowEffect">
       <div className="backCardImg flexGrow flexColumn">
-        <div className="titleSize centerAlign font500">
-          오늘의 포즈
-        </div>
-        <div className="keywordSize centerAlign" id="copy_space">
-          <div className="smallBox centerAlign">
-            <div className="blockBox">
-              {datas && datas['datas'].slice(0, 4).reverse().map((data, index) => (
-                <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
-              ))}
-            </div>
+        <div className="keywordSize centerAlign">
+          <div className="copySpace" id="ELEMENT">
+            <div className="pictureFrame" id="copy_space"></div>
           </div>
         </div>
         <div className="centerAlign"><hr/></div>

@@ -6,6 +6,7 @@ import { getRandomCards, getRandomCardsTest } from "../../components/CardGenerat
 import { useNavigate } from "react-router-dom";
 import { LastCard } from "./LastCard";
 import { FirstCard } from "./FirstCard";
+import { g_pictureNum } from "../../assets/define/define";
 
 function PocaRan() {
 
@@ -26,8 +27,8 @@ const PocaRanAppBar = ({page}) => {
     <div className="ranAppBar">
       <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
       {
-        page !== 5
-        && (<div className="appBarText centerAlign font400">{page}/4</div>)
+        page !== g_pictureNum + 1
+        && (<div className="appBarText centerAlign font400">{page}/{g_pictureNum}</div>)
       }
       <div className="moreIcon icon"></div>
     </div> 
@@ -36,7 +37,7 @@ const PocaRanAppBar = ({page}) => {
 
 
 const PocaRanBody = ({setPage}) => {
-  const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5']])
+  const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['바보', '멍충이']])
   const [first, setFirst] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(datas.length - 1)
   const [lastDirection, setLastDirection] = useState()
@@ -129,7 +130,7 @@ const PocaRanBody = ({setPage}) => {
   }, [])
 
   useEffect(() => {
-    setPage(4 - currentIndex);
+    setPage(g_pictureNum - currentIndex);
     setIsFront(true);
     if (!canSwipe || smallPage <= currentIndex) return; 
     var clickInstance = [];
@@ -172,7 +173,7 @@ const PocaRanBody = ({setPage}) => {
                     onSwipe={(dir) => swiped(dir, data[1], index)}
                     onCardLeftScreen={() => outOfFrame(data[1], index)}>
                       <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
-                        {index == 4 ? <FirstCard/> 
+                        {index == g_pictureNum ? <FirstCard/> 
                         : (
                           <div className="cardImageContainer">
                             <img className = "backCardImg" src={data[1]} />
