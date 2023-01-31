@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
-import { getRandomCards } from "../../components/CardGenerator";
+import { getRandomCards, getRandomCardsTest } from "../../components/CardGenerator";
 import { useNavigate } from "react-router-dom";
 import { LastCard } from "./LastCard";
 import { FirstCard } from "./FirstCard";
@@ -26,7 +26,7 @@ const PocaRanAppBar = ({page}) => {
     <div className="ranAppBar">
       <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
       {
-        page !== 9
+        page !== 5
         && (<div className="appBarText centerAlign font400">{page}/4</div>)
       }
       <div className="moreIcon icon"></div>
@@ -36,7 +36,7 @@ const PocaRanAppBar = ({page}) => {
 
 
 const PocaRanBody = ({setPage}) => {
-  const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5'],['6', '6'],['7', '7'],['8', '8'],['9','9']])
+  const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5']])
   const [first, setFirst] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(datas.length - 1)
   const [lastDirection, setLastDirection] = useState()
@@ -118,7 +118,7 @@ const PocaRanBody = ({setPage}) => {
 
   useEffect(() => {
     async function init() {
-      var tmp = await getRandomCards();
+      var tmp = await getRandomCardsTest();
       if (first === true) {
         setFirst(false);
         tmp.push(['0','0']);
@@ -168,20 +168,20 @@ const PocaRanBody = ({setPage}) => {
                   <TinderCard 
                     ref={childRefs[index]}
                     className="swipe cardBody centerAlign" 
-                    key={data[0]} 
-                    onSwipe={(dir) => swiped(dir, data[0], index)}
-                    onCardLeftScreen={() => outOfFrame(data[0], index)}>
+                    key={data[1]} 
+                    onSwipe={(dir) => swiped(dir, data[1], index)}
+                    onCardLeftScreen={() => outOfFrame(data[1], index)}>
                       <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
                         {index == 4 ? <FirstCard/> 
                         : (
                           <div className="cardImageContainer">
-                            <img className = "backCardImg" src={data[0]} />
+                            <img className = "backCardImg" src={data[1]} />
                           </div>
                         )}
                       </div>
                       <div className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig" id={"backCardId" + currentIndex}>
                         
-                          {data[1]}
+                          {data[0]}
                         
                       </div>
                   </TinderCard> 
