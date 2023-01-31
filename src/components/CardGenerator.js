@@ -25,7 +25,6 @@ export const getRandomCards = async () => {
     getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[3])) )
   ]);
   
-  console.log(resultDeck);
 
   return resultDeck
 }
@@ -38,7 +37,6 @@ const getCardFromdocQuery = async ( docQuery  ) => {
     card[0] = doc.data().name.replace('\\n', '\n');
     card[1] = doc.data().url;
   });
-  console.log(card);
 
   return card
 }
