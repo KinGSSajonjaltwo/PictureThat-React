@@ -27,7 +27,7 @@ const PocaRanAppBar = ({page}) => {
       <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
       {
         page !== 9
-        && (<div className="appBarText centerAlign font400">{page}/8</div>)
+        && (<div className="appBarText centerAlign font400">{page}/4</div>)
       }
       <div className="moreIcon icon"></div>
     </div> 
@@ -129,7 +129,7 @@ const PocaRanBody = ({setPage}) => {
   }, [])
 
   useEffect(() => {
-    setPage(8 - currentIndex);
+    setPage(4 - currentIndex);
     setIsFront(true);
     if (!canSwipe || smallPage <= currentIndex) return; 
     var clickInstance = [];
@@ -164,7 +164,7 @@ const PocaRanBody = ({setPage}) => {
           {currentIndex <= 0 && <LastCard datas={datas}/>}
           {datas.map((data, index) => (
             index === currentIndex ?
-                (index === 8 ?
+                (index === 4 ?
                   // 첫 페이지인 경우
                   <TinderCard 
                   ref={childRefs[index]}
