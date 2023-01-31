@@ -164,37 +164,25 @@ const PocaRanBody = ({setPage}) => {
           {currentIndex <= 0 && <LastCard datas={datas}/>}
           {datas.map((data, index) => (
             index === currentIndex ?
-                (index === 4 ?
-                  // 첫 페이지인 경우
-                  <TinderCard 
-                  ref={childRefs[index]}
-                  className="swipe cardBody centerAlign" 
-                  key={data[0]} 
-                  onSwipe={(dir) => swiped(dir, data[0], index)}
-                  onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                    <div className="cardBody centerAlign shadowEffect flipAni font700 fontBig" id={"frontCardId" + currentIndex}>
-                      <FirstCard/>
-                    </div>
-                    <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
-                      <div className="cardImageContainer">
-                        <img className = "backCardImg" src={data[1]} />
-                      </div>
-                    </div>
-                </TinderCard> 
-                : // 첫 페이지가 아닌 경우
+                (
                   <TinderCard 
                     ref={childRefs[index]}
                     className="swipe cardBody centerAlign" 
                     key={data[0]} 
                     onSwipe={(dir) => swiped(dir, data[0], index)}
                     onCardLeftScreen={() => outOfFrame(data[0], index)}>
-                      <div className="cardBody centerAlign shadowEffect flipAni font700 fontBig" id={"frontCardId" + currentIndex}>
-                        {data[0]}
+                      <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
+                        {index == 4 ? <FirstCard/> 
+                        : (
+                          <div className="cardImageContainer">
+                            <img className = "backCardImg" src={data[0]} />
+                          </div>
+                        )}
                       </div>
-                      <div className="cardBody centerAlign shadowEffect flipAni flipCard" id={"backCardId" + currentIndex}>
-                        <div className="cardImageContainer">
-                          <img className = "backCardImg" src={data[1]} />
-                        </div>
+                      <div className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig" id={"backCardId" + currentIndex}>
+                        
+                          {data[1]}
+                        
                       </div>
                   </TinderCard> 
                 )
