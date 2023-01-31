@@ -47,13 +47,6 @@ export const LastCard = (datas) => {
            <div className="pictureFrame"></div>
           </div>
         </div>
-        <div className="centerAlign"><hr/></div>
-        <div className="bottomSize centerAlign">
-          <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
-            doCopy()}>
-              클립보드 복사
-          </button>
-        </div>
       </div>
     </div>
   )

@@ -8,7 +8,8 @@
 }
 
 .keywordSize {
-    height: 75%;
+    height: 100%;
+    width: 100%;
 }
 
 .bottomSize {
@@ -20,44 +21,45 @@
 }
 
 .copySpace {
-    height: 90%;
-    width: 90%;
-}
-
-.pictureFrame {
-    background-image: url(../../assets/image/pictureframe.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     height: 100%;
     width: 100%;
 }
 
+.pictureFrame {
+    background-image: url(../../assets/image/pictureframe.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
 .commonPicture {
     position: absolute;
-    height: 30%;
-    width: 30%;
+    height: 30vw;
+    width: 30vw;
     z-index: -1;
 }
 
 .picture0 {
-    top: 10%;
-    left: 15%;
+    top: 28vw;
+    left: 4vw;
 }
 
 .picture1 {
-    top: 0%;
-    left: 57%;
+    top: 11vw;
+    left: 37vw;
 }
 
 .picture2 {
-    top: 35%;
-    left: 15%;
+    top: 65vw;
+    left: 4vw;
 }
 
 .picture3 {
-    top: 25%;
-    left: 57%;
+    top: 48vw;
+    left: 37vw;
 }
 
 .downButtom {
