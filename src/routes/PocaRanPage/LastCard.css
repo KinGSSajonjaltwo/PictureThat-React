@@ -33,12 +33,31 @@
     width: 100%;
 }
 
-.picture1 {
+.commonPicture {
     position: absolute;
-    top: 15%;
-    left: 15%;
     height: 30%;
     width: 30%;
+    z-index: -1;
+}
+
+.picture0 {
+    top: 10%;
+    left: 15%;
+}
+
+.picture1 {
+    top: 0%;
+    left: 57%;
+}
+
+.picture2 {
+    top: 35%;
+    left: 15%;
+}
+
+.picture3 {
+    top: 25%;
+    left: 57%;
 }
 
 .downButtom {

@@ -1,76 +1,56 @@
 import "./style.css"
 import "./LastCard.css"
 import React, { useState } from "react";
+import html2canvas from "html2canvas";
+import { useEffect } from "react";
 
 export const LastCard = (datas) => {
 
-  const getText = () => {
-    var tmpText = '';
+  const [pictures, setPictures] = useState([]);
+
+  useEffect(() => {
+    setPictures(getUrls());
+  }, [])
+
+  const getUrls = () => {
+    var tmpUrl = ['', '', '', ''];
     datas['datas'].slice(0, 4).reverse().forEach((element, index) => {
-      tmpText += element[0] + '\n';
+      tmpUrl[index] = element[1];
     });
-    return tmpText;
+    return tmpUrl;
   }
 
-  const doCopy = text => {
-    // 흐음 1.
-    if (navigator.clipboard) {
-      // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
-          alert("클립보드에 복사되었습니다.");
-        })
-        .catch(() => {
-          alert("복사를 다시 시도해주세요.");
-        });
-    } else {
-      // 흐름 2.
-      if (!document.queryCommandSupported("copy")) {
-        return alert("복사하기가 지원되지 않는 브라우저입니다.");
+  const doCopy = () => {
+    console.log(pictures);
+    html2canvas(document.querySelector("#copy_space")).then(function(canvas){
+      if (navigator.msSaveBlob) {
+        var blob = canvas.msToBlob(); 
+        return navigator.msSaveBlob(blob, 'test.jpg'); 
+      } else { 
+        var el = document.createElement("a");
+        el.href = canvas.toDataURL("image/jpeg");
+        el.download = 'test.jpg';
+        el.click();
       }
+    })};
 
-      // 흐름 3.
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      textarea.style.top = 0;
-      textarea.style.left = 0;
-      textarea.style.position = "fixed";
-
-      // 흐름 4.
-      document.body.appendChild(textarea);
-      // focus() -> 사파리 브라우저 서포팅
-      textarea.focus();
-      // select() -> 사용자가 입력한 내용을 영역을 설정할 때 필요
-      textarea.select();
-      // 흐름 5.
-      document.execCommand("copy");
-      // 흐름 6.
-      document.body.removeChild(textarea);
-      alert("클립보드에 복사되었습니다.");
-    }
-  };
   
 
   return (
     <div className="cardBody centerAlign shadowEffect">
       <div className="backCardImg flexGrow flexColumn">
-        <div className="titleSize centerAlign font500">
-          오늘의 포즈
-        </div>
         <div className="keywordSize centerAlign">
-          <div className="smallBox centerAlign">
-            <div className="blockBox">
-              {datas && datas['datas'].slice(0, 4).reverse().map((data, index) => (
-                <pre className="keywordText" key={index}>{data[0]}</pre>
-              ))}
-            </div>
+          <div className="copySpace" id="copy_space">
+            { pictures && pictures.map((data, index) => (
+              <img className={"picture" + index + " commonPicture"} key={index} src={data}></img>
+            ))}
+           <div className="pictureFrame"></div>
           </div>
         </div>
         <div className="centerAlign"><hr/></div>
         <div className="bottomSize centerAlign">
           <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
-            doCopy(getText())}>
+            doCopy()}>
               클립보드 복사
           </button>
         </div>

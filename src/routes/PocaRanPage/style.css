@@ -86,8 +86,8 @@
 }
 
 .cardsHouse {
-    height: 90%;
-    width: 80%;
+    height: 25em;
+    width: 15em;
     box-sizing: border-box;
     position: relative;
 }
