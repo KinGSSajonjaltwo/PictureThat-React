@@ -33,6 +33,14 @@
     width: 100%;
 }
 
+.picture1 {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    height: 30%;
+    width: 30%;
+}
+
 .downButtom {
     height: 30%;
     width: 70%;
