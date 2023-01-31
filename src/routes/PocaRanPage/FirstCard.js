@@ -22,7 +22,7 @@ export const FirstCard = () =>{
       <div className = "FirstCardHowto font500">
         카드를 밀어서 카드 넘기기
       </div>
-      <dic className = "FirstCardFlexGrow"></dic>
+      <div className = "FirstCardFlexGrow"></div>
       <div className="FirstCardHoneyTip font400 ">
         텐션 올리는 법 - 텐션을 든다
       </div>
