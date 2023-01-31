@@ -9,8 +9,8 @@ export const getRandomCardsTest = async ()  => {
   
   return [
 
-    ["사댱해","gs://picture-that-84402.appspot.com/2-heart-bbig.png"] , ["#하트꿈치","gs://picture-that-84402.appspot.com/2-heart-elbow.png "] , ["#거꾸로하트","gs://picture-that-84402.appspot.com/2-heart-mid.png"] , ["#하트하트#내마음이야","gs://picture-that-84402.appspot.com/2-heart-small.png"]]
-    
+    ["#사댱해","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-small.png?alt=media&token=ee2ba9e7-87d3-4750-964b-21f2f0d660de"] , ["#하트꿈치","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-elbow.png?alt=media&token=c0e27438-51eb-41ab-93ea-41e470dc54fe"] , ["#거꾸로하트","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-mid.png?alt=media&token=57e257e6-5f72-4822-9261-cb4d0d0e15fc"] , ["#하트하트#내마음이야","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-bbig.png?alt=media&token=3e184205-7528-46d6-82e0-555abb7f01c3"]]
+
   }
 
 
