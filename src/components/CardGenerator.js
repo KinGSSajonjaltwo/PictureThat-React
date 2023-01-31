@@ -1,6 +1,7 @@
 import React from "react";
 import {fBase} from "./FBase"
 import { getFirestore, collection, doc, getDoc , getDocs , query, limit,where , setDoc, orderBy} from 'firebase/firestore/lite';
+import { async } from "@firebase/util";
 
 const fdb = getFirestore(fBase);
 const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
@@ -11,9 +12,62 @@ export const getRandomCardsTest = async ()  => {
 
     ["#사댱해","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-small.png?alt=media&token=ee2ba9e7-87d3-4750-964b-21f2f0d660de"] , ["#하트꿈치","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-elbow.png?alt=media&token=c0e27438-51eb-41ab-93ea-41e470dc54fe"] , ["#거꾸로하트","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-mid.png?alt=media&token=57e257e6-5f72-4822-9261-cb4d0d0e15fc"] , ["#하트하트\n#내마음이야","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-bbig.png?alt=media&token=3e184205-7528-46d6-82e0-555abb7f01c3"]]
 
+}
+
+export const getRandomCards = async () => {
+  
+  const randomIndex = await getrandomIndex(); 
+
+  const resultDeck = await Promise.all([
+    getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[0])) ), 
+    getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[1])) ),
+    getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[2])) ),
+    getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[3])) )
+  ]);
+  
+  console.log(resultDeck);
+
+  return resultDeck
+}
+
+const getCardFromdocQuery = async ( docQuery  ) => {
+  
+  const cardDoc = await getDocs(docQuery);
+  let card = [,];
+  cardDoc.forEach((doc) => {
+    card[0] = doc.data().name.replace('\\n', '\n');
+    card[1] = doc.data().url;
+  });
+  console.log(card);
+
+  return card
+}
+
+const getrandomIndex = async () => {
+
+  const docRef = doc(fdb, "constants", "test2Length");
+  const docSnap = await getDoc(docRef);
+  let collectionLength  = docSnap.data().nums;
+  let randomIndex = selectIndex(collectionLength, 4);
+  return randomIndex 
+
+}
+
+const selectIndex = (totalIndex, selectingNumber) => {
+  let randomIndexArray = []
+  for (let i=0; i<selectingNumber; i++) { //check if there is any duplicate index
+    const randomNum = Math.floor(Math.random() * totalIndex)
+    if (randomIndexArray.indexOf(randomNum) === -1) {
+      randomIndexArray.push(randomNum)
+    } else { //if the randomNum is already in the array retry
+      i--
+    }
   }
+  return randomIndexArray
+}
 
-
+/*
+// getRandom Cards - MZ테스트 ver.
 export const getRandomCards = async () => {
   //1. 각 collection 별로 random index 생성
   //collection별 number of index : Classic(0) : 3", "Meme(1) : 2", "Together(2) : 2", "Change(3) : 1" 
@@ -93,10 +147,5 @@ const selectIndex = (totalIndex, selectingNumber) => {
   return randomIndexArray
 }
 
-
-
-export const getEventCards = () => {
-  return ["BTS", "봉준호", "손흥민", "제이팍"]
-}
-
+*/
 
