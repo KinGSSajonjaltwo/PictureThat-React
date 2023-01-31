@@ -34,7 +34,7 @@ const getCardFromdocQuery = async ( docQuery  ) => {
   const cardDoc = await getDocs(docQuery);
   let card = [,];
   cardDoc.forEach((doc) => {
-    card[0] = doc.data().name.replace('\\n', '\n');
+    card[0] = doc.data().name.replace(/\\n/gi, '\n');
     card[1] = doc.data().url;
   });
 
