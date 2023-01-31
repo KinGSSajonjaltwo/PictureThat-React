@@ -180,9 +180,7 @@ const PocaRanBody = ({setPage}) => {
                         )}
                       </div>
                       <div className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig" id={"backCardId" + currentIndex}>
-                        
                           {data[0]}
-                        
                       </div>
                   </TinderCard> 
                 )
@@ -190,9 +188,9 @@ const PocaRanBody = ({setPage}) => {
               <TinderCard 
               ref={childRefs[index]}
               className="swipe cardBody centerAlign" 
-              key={data[0]} 
-              onSwipe={(dir) => swiped(dir, data[0], index)}
-              onCardLeftScreen={() => outOfFrame(data[0], index)}>
+              key={data[1]} 
+              onSwipe={(dir) => swiped(dir, data[1], index)}
+              onCardLeftScreen={() => outOfFrame(data[1], index)}>
                 <div className="cardBody centerAlign">
                   {/* 빈칸 */}
                 </div>

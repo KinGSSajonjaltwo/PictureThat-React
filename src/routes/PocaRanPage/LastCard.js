@@ -6,7 +6,7 @@ export const LastCard = (datas) => {
 
   const getText = () => {
     var tmpText = '';
-    datas['datas'].slice(0, 8).reverse().forEach((element, index) => {
+    datas['datas'].slice(0, 4).reverse().forEach((element, index) => {
       tmpText += (index + 1) + '. ' + element[0] + '\n';
     });
     return tmpText;
@@ -61,7 +61,7 @@ export const LastCard = (datas) => {
         <div className="keywordSize centerAlign">
           <div className="smallBox centerAlign">
             <div className="blockBox">
-              {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
+              {datas && datas['datas'].slice(0, 4).reverse().map((data, index) => (
                 <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
               ))}
             </div>
