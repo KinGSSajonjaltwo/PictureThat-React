@@ -162,24 +162,20 @@
     font-family: 'Noto Sans KR', sans-serif;
     color: #595959;
     font-weight: 400;
-    transition: none;
 }
 
 .font500 {
     font-family: 'Noto Sans KR', sans-serif;
     color: #3D3D3D;
     font-weight: 500;
-    transition: none;
 }
 
 .font700 {
     font-family: 'Noto Sans KR', sans-serif;
     color: #444444;
     font-weight: 700;
-    transition: none;
 }
 
 .fontBig {
     font-size: 2em;
-    transition: none;
 }
