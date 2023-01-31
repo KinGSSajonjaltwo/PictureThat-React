@@ -172,7 +172,7 @@ const PocaRanBody = ({setPage}) => {
                     key={data[1]} 
                     onSwipe={(dir) => swiped(dir, data[1], index)}
                     onCardLeftScreen={() => outOfFrame(data[1], index)}>
-                      <div className="cardBody centerAlign shadowEffect flipAni" id={"frontCardId" + currentIndex}>
+                      <div className="cardBody centerAlign shadowEffect flipAni frontCardBG" id={"frontCardId" + currentIndex}>
                         {index == g_pictureNum ? <FirstCard/> 
                         : (
                           <div className="cardImageContainer">
@@ -180,7 +180,7 @@ const PocaRanBody = ({setPage}) => {
                           </div>
                         )}
                       </div>
-                      <pre className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig" id={"backCardId" + currentIndex}>
+                      <pre className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig backCardBG" id={"backCardId" + currentIndex}>
                           {data[0]}
                       </pre>
                   </TinderCard> 
@@ -188,7 +188,7 @@ const PocaRanBody = ({setPage}) => {
              : 
               <TinderCard 
               ref={childRefs[index]}
-              className="swipe cardBody centerAlign" 
+              className="swipe cardBody centerAlign frontCardBG" 
               key={data[1]} 
               onSwipe={(dir) => swiped(dir, data[1], index)}
               onCardLeftScreen={() => outOfFrame(data[1], index)}>
