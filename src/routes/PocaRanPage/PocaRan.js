@@ -179,9 +179,9 @@ const PocaRanBody = ({setPage}) => {
                           </div>
                         )}
                       </div>
-                      <div className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig" id={"backCardId" + currentIndex}>
+                      <pre className="cardBody centerAlign shadowEffect flipAni flipCard font700 fontBig" id={"backCardId" + currentIndex}>
                           {data[0]}
-                      </div>
+                      </pre>
                   </TinderCard> 
                 )
              : 
@@ -194,9 +194,9 @@ const PocaRanBody = ({setPage}) => {
                 <div className="cardBody centerAlign">
                   {/* 빈칸 */}
                 </div>
-                <div className="cardBody centerAlign flipAni flipCard">
+                <pre className="cardBody centerAlign flipAni flipCard  font700 fontBig">
                   {/* 빈칸 */}
-                </div>
+                </pre>
             </TinderCard>
           ))}
         </div>
