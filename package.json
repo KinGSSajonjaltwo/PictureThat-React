@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.15.0",
     "html2canvas": "^1.4.1",
-    "jquery": "^3.6.3",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-card-flip": "^1.2.0",

@@ -2,7 +2,6 @@ import "./style.css"
 import "./LastCard.css"
 import React, { useState } from "react";
 import html2canvas from "html2canvas";
-import {jQuery} from "jquery";
 
 export const LastCard = (datas) => {
 
@@ -15,35 +14,21 @@ export const LastCard = (datas) => {
   }
 
   const doCopy = () => {
-    var ELEMENT = jQuery("#ELEMENT");
-    console.log('1');
 
-    //get element width and height
-    var w = ELEMENT.width();
-    var h = ELEMENT.height();
 
-    //scale up your element
-    ELEMENT.css({
-      'transform': 'scale(3)',
-      '-ms-transform': 'scale(3)',
-      '-webkit-transform': 'scale(3)' });
 
-      //run html2canvas
-      html2canvas(ELEMENT, {
-        onrendered: function(canvas) {
-          html2canvas(document.querySelector("#copy_space")).then(function(canvas){
-            if (navigator.msSaveBlob) {
-              var blob = canvas.msToBlob(); 
-              return navigator.msSaveBlob(blob, 'test.jpg'); 
-            } else { 
-              var el = document.createElement("a");
-              el.href = canvas.toDataURL("image/jpeg");
-              el.download = 'test.jpg';
-              el.click();
-            }
-          })
-    }});
-  };
+    html2canvas(document.querySelector("#copy_space")).then(function(canvas){
+      if (navigator.msSaveBlob) {
+        var blob = canvas.msToBlob(); 
+        return navigator.msSaveBlob(blob, 'test.jpg'); 
+      } else { 
+        var el = document.createElement("a");
+        el.href = canvas.toDataURL("image/jpeg");
+        el.download = 'test.jpg';
+        el.click();
+      }
+    })};
+
   
 
   return (
