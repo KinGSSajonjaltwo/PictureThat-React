@@ -42,7 +42,7 @@ export const LastCard = (datas) => {
               el.click();
             }
           })
-    });
+    }});
   };
   
 
