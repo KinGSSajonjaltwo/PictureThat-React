@@ -8,13 +8,13 @@ export const FirstCard = () =>{
         안내사항
       </div>
       <div className ="FirstCardReady font500">
-        [ 포즈 카드 4장 준비 완료 ]
+        [ 중대 8경 카드 준비 완료 ]
       </div>
       <div className = "FirstCardHowto font500">
-        포즈 카드 앞면은 포즈
+        카드 앞면은 사진
       </div>
       <div className = "FirstCardHowto font500">
-        포즈 카드 뒷면은 태그
+        카드 뒷면은 태그
       </div>
       <div className = "FirstCardHowto font500">
         카드를 눌러서 카드 뒤집기
@@ -24,10 +24,10 @@ export const FirstCard = () =>{
       </div>
       <div className = "FirstCardFlexGrow"></div>
       <div className="FirstCardHoneyTip font400 ">
-        텐션 올리는 법 - 텐션을 든다!
+        중대 투어 가보작오
       </div>
       <div className="FirstCardHoneyTip font400">
-        꺄르르 꺄르르 꺄르르
+        중! 앙! 대!
       </div>
     </div>
     
