@@ -7,11 +7,15 @@
 
 .entire {
     position: relative;
-    background: linear-gradient(180deg, #CBD0FF 0%, #EBEDFF 100%);
+    /* background: linear-gradient(180deg, #CBD0FF 0%, #EBEDFF 100%); */
+    background-image: url(../../assets/image/testBG.png);
+    background-repeat : no-repeat;
+    background-position : center;
+    background-size:cover;
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 0px auto;
     transform: unset !important;
 }
@@ -112,13 +116,14 @@
 }
 
 .frontCardBG{
-    background-image: url(../../assets/image/pocaBG.png);
+    /* background-image: url(../../assets/image/pocaBG.png); */
+    background: #e0e0e0;
     background-position : center;
     background-size: cover;
 }
 
 .backCardBG{
-    background: #FFFFFF;
+    background: #e0e0e0;
 }
 
 .cardImageContainer{

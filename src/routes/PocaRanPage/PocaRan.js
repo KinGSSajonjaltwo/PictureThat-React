@@ -14,7 +14,7 @@ function PocaRan() {
 
   return (
     <div className="entire">
-      <div className="backRec"/>
+      {/* <div className="backRec"/> */}
       <PocaRanAppBar page={page}/>
       <PocaRanBody setPage={setPage}/>  
     </div>
