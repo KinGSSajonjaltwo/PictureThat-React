@@ -16,10 +16,10 @@ export const getRandomCardsTest = async (cardNums) => {
 }
 
 export const getRandomCards = async (cardNums) => {
-  //cardNum 개수만큼 RandomCard 생성=
+  //cardNum 개수만큼 RandomCard 생성
 
   const randomIndex = await getrandomIndex(cardNums);
-  const resultDeck = ["준비중", "준비중"];
+  let resultDeck;
   switch (cardNums) {
     case 1:
       resultDeck = await Promise.all([
@@ -40,6 +40,7 @@ export const getRandomCards = async (cardNums) => {
         getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
         getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
       ]);
+      return resultDeck;
       break;
 
     case 4:
@@ -49,6 +50,7 @@ export const getRandomCards = async (cardNums) => {
         getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
         getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3])))
       ]);
+      return resultDeck;
       break;
 
     case 5:
@@ -125,6 +127,8 @@ export const getRandomCards = async (cardNums) => {
         getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[9])))
       ]);
       break;
+    default:
+      break;
   }
 
   /*
@@ -135,6 +139,7 @@ export const getRandomCards = async (cardNums) => {
     getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[3])) )
   ]);
   */
+  console.log(resultDeck);
 
 
   return resultDeck
