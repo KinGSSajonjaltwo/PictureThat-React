@@ -37,28 +37,28 @@
 
 .commonPicture {
     position: absolute;
-    height: 39vw;
+    height: 37vw;
     width: 33vw;
     z-index: -1;
 }
 
 .picture0 {
-    top: 20vw;
+    top: 18vw;
     left: 2vw;
 }
 
 .picture1 {
-    top: 3vw;
+    top: 1vw;
     left: 35vw;
 }
 
 .picture2 {
-    top: 59vw;
+    top: 56vw;
     left: 2vw;
 }
 
 .picture3 {
-    top: 42vw;
+    top: 38vw;
     left: 35vw;
 }
 

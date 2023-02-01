@@ -193,7 +193,12 @@ const PocaRanBody = ({setPage}) => {
               onSwipe={(dir) => swiped(dir, data[1], index)}
               onCardLeftScreen={() => outOfFrame(data[1], index)}>
                 <div className="cardBody centerAlign shadowEffect">
-                  {/* 빈칸 */}
+                  {index == g_pictureNum ? <FirstCard/> 
+                        : (
+                          <div className="cardImageContainer">
+                            <img className = "backCardImg" src={data[1]} />
+                          </div>
+                        )}
                 </div>
                 <pre className="cardBody centerAlign flipAni flipCard  font700 fontBig">
                   {/* 빈칸 */}

@@ -39,14 +39,12 @@ export const LastCard = (datas) => {
   return (
     <div className="cardBody centerAlign shadowEffect">
       <div className="backCardImg flexGrow flexColumn">
-        <div className="keywordSize centerAlign">
           <div className="copySpace" id="copy_space">
             { pictures && pictures.map((data, index) => (
               <img className={"picture" + index + " commonPicture"} key={index} src={data}></img>
             ))}
            <div className="pictureFrame"></div>
           </div>
-        </div>
       </div>
     </div>
   )
