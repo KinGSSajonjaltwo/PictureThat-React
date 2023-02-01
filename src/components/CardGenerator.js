@@ -1,37 +1,148 @@
 import React from "react";
-import {fBase} from "./FBase"
-import { getFirestore, collection, doc, getDoc , getDocs , query, limit,where , setDoc, orderBy} from 'firebase/firestore/lite';
+import { fBase } from "./FBase"
+import { getFirestore, collection, doc, getDoc, getDocs, query, limit, where, setDoc, orderBy } from 'firebase/firestore/lite';
 import { async } from "@firebase/util";
 
 const fdb = getFirestore(fBase);
 const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
 
 
-export const getRandomCardsTest = async (cardNums)  => {
-  
+export const getRandomCardsTest = async (cardNums) => {
+
   return [
 
-    ["#사댱해","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-small.png?alt=media&token=ee2ba9e7-87d3-4750-964b-21f2f0d660de"] , ["#하트꿈치","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-elbow.png?alt=media&token=c0e27438-51eb-41ab-93ea-41e470dc54fe"] , ["#거꾸로하트","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-mid.png?alt=media&token=57e257e6-5f72-4822-9261-cb4d0d0e15fc"] , ["#하트하트\n#내마음이야","https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-bbig.png?alt=media&token=3e184205-7528-46d6-82e0-555abb7f01c3"]]
+    ["#사댱해", "https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-small.png?alt=media&token=ee2ba9e7-87d3-4750-964b-21f2f0d660de"], ["#하트꿈치", "https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-elbow.png?alt=media&token=c0e27438-51eb-41ab-93ea-41e470dc54fe"], ["#거꾸로하트", "https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-mid.png?alt=media&token=57e257e6-5f72-4822-9261-cb4d0d0e15fc"], ["#하트하트\n#내마음이야", "https://firebasestorage.googleapis.com/v0/b/picture-that-84402.appspot.com/o/2-heart-bbig.png?alt=media&token=3e184205-7528-46d6-82e0-555abb7f01c3"]]
 
 }
 
 export const getRandomCards = async (cardNums) => {
-  
-  const randomIndex = await getrandomIndex(); 
+  //cardNum 개수만큼 RandomCard 생성=
 
+  const randomIndex = await getrandomIndex(cardNums);
+  const resultDeck = ["준비중", "준비중"];
+  switch (cardNums) {
+    case 1:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+      ]);
+      break;
+
+    case 2:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+      ]);
+      break;
+
+    case 3:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+      ]);
+      break;
+
+    case 4:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3])))
+      ]);
+      break;
+
+    case 5:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[4]))),
+      ]);
+      break;
+    
+    case 6:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[5])))
+      ]);
+      break;
+
+    case 7:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[6])))
+      ]);
+      break;
+
+    case 8:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[6]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[7]))),
+      ]);
+      break;
+
+    case 9:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[6]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[7]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[8])))
+      ]);
+      break;
+
+    case 10:
+      resultDeck = await Promise.all([
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[6]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[7]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[8]))),
+        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[9])))
+      ]);
+      break;
+  }
+
+  /*
   const resultDeck = await Promise.all([
     getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[0])) ), 
     getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[1])) ),
     getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[2])) ),
     getCardFromdocQuery( query(collection(fdb, "test2") , where("id", "==" , randomIndex[3])) )
   ]);
-  
+  */
+
 
   return resultDeck
+
 }
 
-const getCardFromdocQuery = async ( docQuery  ) => {
-  
+const getCardFromdocQuery = async (docQuery) => {
+
   const cardDoc = await getDocs(docQuery);
   let card = [,];
   cardDoc.forEach((doc) => {
@@ -42,19 +153,19 @@ const getCardFromdocQuery = async ( docQuery  ) => {
   return card
 }
 
-const getrandomIndex = async () => {
+const getrandomIndex = async (getrandomIndex) => {
 
   const docRef = doc(fdb, "constants", "test2Length");
   const docSnap = await getDoc(docRef);
-  let collectionLength  = docSnap.data().nums;
-  let randomIndex = selectIndex(collectionLength, 4);
-  return randomIndex 
+  let collectionLength = docSnap.data().nums;
+  let randomIndex = selectIndex(collectionLength, getrandomIndex);
+  return randomIndex
 
 }
 
 const selectIndex = (totalIndex, selectingNumber) => {
   let randomIndexArray = []
-  for (let i=0; i<selectingNumber; i++) { //check if there is any duplicate index
+  for (let i = 0; i < selectingNumber; i++) { //check if there is any duplicate index
     const randomNum = Math.floor(Math.random() * totalIndex)
     if (randomIndexArray.indexOf(randomNum) === -1) {
       randomIndexArray.push(randomNum)
@@ -65,9 +176,9 @@ const selectIndex = (totalIndex, selectingNumber) => {
   return randomIndexArray
 }
 
-/*
+
 // getRandom Cards - MZ테스트 ver.
-export const getRandomCards = async () => {
+export const getEventCards = async (cardNums) => {
   //1. 각 collection 별로 random index 생성
   //collection별 number of index : Classic(0) : 3", "Meme(1) : 2", "Together(2) : 2", "Change(3) : 1" 
   //2. read random index document 
@@ -133,18 +244,5 @@ const selectCollectionIndex = async () => {
 }
 
 
-const selectIndex = (totalIndex, selectingNumber) => {
-  let randomIndexArray = []
-  for (let i=0; i<selectingNumber; i++) { //check if there is any duplicate index
-    const randomNum = Math.floor(Math.random() * totalIndex)
-    if (randomIndexArray.indexOf(randomNum) === -1) {
-      randomIndexArray.push(randomNum)
-    } else { //if the randomNum is already in the array retry
-      i--
-    }
-  }
-  return randomIndexArray
-}
 
-*/
 
