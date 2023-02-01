@@ -15,7 +15,7 @@ export const getRandomCardsTest = async (cardNums)  => {
 
 }
 
-export const getRandomCards = async () => {
+export const getRandomCards = async (cardNums) => {
   
   const randomIndex = await getrandomIndex(); 
 
