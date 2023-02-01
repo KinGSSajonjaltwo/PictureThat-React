@@ -119,7 +119,7 @@ const PocaRanBody = ({setPage}) => {
 
   useEffect(() => {
     async function init() {
-      var tmp = await getRandomCards();
+      var tmp = await getRandomCards(8);
       if (first === true) {
         setFirst(false);
         tmp.push(['0','0']);

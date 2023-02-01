@@ -6,7 +6,8 @@ import { async } from "@firebase/util";
 const fdb = getFirestore(fBase);
 const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
 
-export const getRandomCardsTest = async ()  => {
+
+export const getRandomCardsTest = async (cardNums)  => {
   
   return [
 
