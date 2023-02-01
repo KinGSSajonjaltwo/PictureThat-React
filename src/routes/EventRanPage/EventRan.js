@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 import "./style.css"
 import "../../components/CardGenerator";
-import { getRandomCards } from "../../components/CardGenerator";
+import { getEventCards, getRandomCards } from "../../components/CardGenerator";
 import { useNavigate } from "react-router-dom";
 import { LastCard } from "./LastCard";
 import { FirstCard } from "./FirstCard";
@@ -118,7 +118,8 @@ const EventRanBody = ({setPage}) => {
 
   useEffect(() => {
     async function init() {
-      var tmp = await getRandomCards();
+      var tmp = await getEventCards(8);
+      console.log(tmp)
       if (first === true) {
         setFirst(false);
         tmp.push(['0','0']);
@@ -188,9 +189,9 @@ const EventRanBody = ({setPage}) => {
               <TinderCard 
               ref={childRefs[index]}
               className="swipe cardBody centerAlign frontCardBG" 
-              key={data[0]} 
-              onSwipe={(dir) => swiped(dir, data[0], index)}
-              onCardLeftScreen={() => outOfFrame(data[0], index)}>
+              key={data[1]} 
+              onSwipe={(dir) => swiped(dir, data[1], index)}
+              onCardLeftScreen={() => outOfFrame(data[1], index)}>
                 <div className="cardBody centerAlign shadowEffect">
                   {/* 빈칸 */}
                 </div>
