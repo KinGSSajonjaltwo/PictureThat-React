@@ -21,7 +21,9 @@ function Home() {
         <div className="mainButtons">
           <div className="startButton" onClick={() => (navigate("/pocaran"))}/>
           <br></br>
-          <div className="eventButton"/>
+          <div className="eventButton" onClick={() => (navigate("/EventRan"))}/>
+          <br></br>
+          <div className="eventButton" onClick={() => (navigate("/Cau"))}/>
         </div>
       </div>
     </div>
