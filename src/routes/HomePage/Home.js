@@ -14,7 +14,7 @@ function Home() {
         <div className = "camera2"/>
         <div className = "camera3"/>
         <div className = "camera4"/>
-        <div className="mainLogo"/>
+        <div className="mainLogo" onClick={() => (navigate("/Cau"))} />
 
         <div className = "innerCameraFrame"/>
 
@@ -23,7 +23,6 @@ function Home() {
           <br></br>
           <div className="eventButton" onClick={() => (navigate("/EventRan"))}/>
           <br></br>
-          <div className="eventButton" onClick={() => (navigate("/Cau"))}/>
         </div>
       </div>
     </div>
