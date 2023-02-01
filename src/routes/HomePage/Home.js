@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
+import {setPictureNum} from "../../assets/define/define"
 
 import { getRandomCards } from "../../components/CardGenerator";
 
+
 function Home() {
   let navigate = useNavigate();
+
+  const [cardNum, setCardNum] = useState(4);
+
   return(
     <div className = "mainBG">
       <div className= "outerCameraFrame">
@@ -19,10 +24,18 @@ function Home() {
         <div className = "innerCameraFrame"/>
 
         <div className="mainButtons">
-          <div className="startButton" onClick={() => (navigate("/pocaran"))}/>
-          <br></br>
-          <div className="eventButton" onClick={() => (navigate("/EventRan"))}/>
-          <br></br>
+          <div className="cardNumControlButton">
+            <div onClick={() => {setCardNum(rev => rev <= 3 ? rev : rev - 1)}}>12</div>
+            {cardNum}
+            <div onClick={() => {setCardNum(rev => rev >= 10 ? rev : rev + 1)}}>34</div>
+          </div>
+          <div className="enter"></div>
+          <div className="startButton" onClick={() => {
+              navigate("/PocaRan");
+              setPictureNum(cardNum);
+            }}/>
+          <div className="enter"></div>
+          <div className="startButton" onClick={() => (navigate("/EventRan"))}/>
         </div>
       </div>
     </div>

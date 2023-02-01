@@ -37,7 +37,7 @@ const PocaRanAppBar = ({page}) => {
 
 
 const PocaRanBody = ({setPage}) => {
-  const [datas, setDatas] = useState([['1', '1'],['2', '2'],['3', '3'],['4', '4'],['바보', '멍충이']])
+  const [datas, setDatas] = useState(Array.from({ length: g_pictureNum + 1 }, (v, i) => i + 1))
   const [first, setFirst] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(datas.length - 1)
   const [lastDirection, setLastDirection] = useState()
@@ -192,7 +192,7 @@ const PocaRanBody = ({setPage}) => {
               key={data[1]} 
               onSwipe={(dir) => swiped(dir, data[1], index)}
               onCardLeftScreen={() => outOfFrame(data[1], index)}>
-                <div className="cardBody centerAlign">
+                <div className="cardBody centerAlign shadowEffect">
                   {/* 빈칸 */}
                 </div>
                 <pre className="cardBody centerAlign flipAni flipCard  font700 fontBig">

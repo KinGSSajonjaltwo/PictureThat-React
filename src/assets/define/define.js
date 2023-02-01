@@ -1,4 +1,8 @@
-export const g_pictureNum = 4;
+export var g_pictureNum = 4;
+
+export function setPictureNum(a) {
+    g_pictureNum = a;
+}
 
 export const g_frameHeight = 800;
 export const g_frameWidth = 535;
