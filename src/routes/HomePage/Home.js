@@ -24,18 +24,13 @@ function Home() {
         <div className = "innerCameraFrame"/>
 
         <div className="mainButtons">
-          <div className="cardNumControlButton">
-            <div onClick={() => {setCardNum(rev => rev <= 3 ? rev : rev - 1)}}>12</div>
-            {cardNum}
-            <div onClick={() => {setCardNum(rev => rev >= 10 ? rev : rev + 1)}}>34</div>
-          </div>
           <div className="enter"></div>
           <div className="startButton" onClick={() => {
               navigate("/PocaRan");
-              setPictureNum(cardNum);
             }}/>
-          <div className="enter"></div>
+          <br></br>
           <div className="startButton" onClick={() => (navigate("/EventRan"))}/>
+          <br></br>
         </div>
       </div>
     </div>
