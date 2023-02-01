@@ -217,4 +217,4 @@ const PocaRanBody = ({setPage}) => {
 }
 
 
-export default PocaRan
+export default PocaRan;

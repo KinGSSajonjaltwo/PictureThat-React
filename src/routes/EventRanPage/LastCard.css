@@ -1,0 +1,42 @@
+/* 가보자 */
+
+.titleSize {
+    height: 20%;
+    margin-top: 5%;
+    font-size: 22px;
+    transition: none;
+}
+
+.keywordSize {
+    height: 55%;
+    margin-bottom: 10%
+}
+
+.bottomSize {
+    height: 25%;
+}
+
+.smallBox {
+    width: 70%;
+}
+
+.downButtom {
+    height: 30%;
+    width: 70%;
+    background: #EFEEFF;
+    border-radius: 10px;
+}
+
+hr {
+    border: 0px;
+    width: 80%;
+    border-top: 1px solid #D3D3D3
+}
+
+.keywordText {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    color: #7a7a7a;
+    line-height: 30px;
+    transition: none;
+}
