@@ -45,10 +45,10 @@ export const getRandomCards = async (cardNums) => {
 
     case 4:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "test2"), where("id", "==", randomIndex[3])))
+        getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", randomIndex[3])))
       ]);
       return resultDeck;
       break;
