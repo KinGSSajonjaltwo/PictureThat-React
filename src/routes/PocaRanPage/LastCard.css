@@ -37,20 +37,20 @@
 
 .commonPicture {
     position: absolute;
-    height: 37vw;
-    width: 33vw;
+    height: 40vw;
+    width: 34vw;
     z-index: -1;
     object-fit: cover;
 }
 
 .picture0 {
-    top: 22vw;
-    left: 2vw;
+    top: 20vw;
+    left: 3vw;
 }
 
 .picture1 {
-    top: 4vw;
-    left: 35vw;
+    top: 1vw;
+    left: 38vw;
 }
 
 .picture2 {
@@ -59,8 +59,8 @@
 }
 
 .picture3 {
-    top: 42vw;
-    left: 35vw;
+    top: 41vw;
+    left: 38vw;
 }
 
 .downButtom {

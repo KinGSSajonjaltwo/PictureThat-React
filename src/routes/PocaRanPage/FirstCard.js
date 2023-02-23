@@ -1,5 +1,6 @@
 import "./style.css"
 import "./FirstCard.css"
+import { g_pictureNum } from "../../assets/define/define";
 
 export const FirstCard = () =>{
   return (
@@ -8,7 +9,7 @@ export const FirstCard = () =>{
         안내사항
       </div>
       <div className ="FirstCardReady font500">
-        [ 포즈 카드 4장 준비 완료 ]
+        [ 포즈 카드 {g_pictureNum}장 준비 완료 ]
       </div>
       <div className = "FirstCardHowto font500">
         포즈 카드 앞면은 포즈
