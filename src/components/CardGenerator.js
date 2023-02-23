@@ -3,11 +3,16 @@ import { fBase } from "./FBase"
 import { getFirestore, collection, doc, getDoc, getDocs, query, limit, where, setDoc, orderBy } from 'firebase/firestore/lite';
 import { async } from "@firebase/util";
 
+import { analytics } from "./FBase";
+import { logEvent } from "firebase/analytics";
+
 const fdb = getFirestore(fBase);
 const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
 const fdbCollectionName = "ver1";
 
 export const getRandomCardsTest = async (cardNums) => {
+  
+  logEvent(analytics, '랜덤카드 테스트 함수 호출',{name: '랜덤카드테스트 실행'});
   let resultDeck;
   resultDeck = await Promise.all([
     getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 3))),
@@ -23,6 +28,7 @@ export const getRandomCards = async (cardNums) => {
   //cardNum 개수만큼 RandomCard 생성
 
   const randomIndex = await getrandomIndex(cardNums);
+  console.log(randomIndex)
   let resultDeck;
   switch (cardNums) {
     case 1:
@@ -158,7 +164,15 @@ const getrandomIndex = async (getrandomIndex) => {
 
   const docRef = doc(fdb, "constants", "ver1Length");
   const docSnap = await getDoc(docRef);
+  
   let collectionLength = docSnap.data().nums;
+  
+  localStorage.clear('indexChecker')
+  if ( localStorage.getItem("indexChecker") == null  ){ 
+    // to do 남아있는 자리 수 확인 
+    let indexCheckerArray = ["a"];
+    localStorage.setItem("indexChecker", "asd")
+  }
   let randomIndex = selectIndex(collectionLength, getrandomIndex);
   return randomIndex
 
