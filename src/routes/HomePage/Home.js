@@ -19,7 +19,7 @@ function Home() {
         <div className = "camera2"/>
         <div className = "camera3"/>
         <div className = "camera4"/>
-        <div className="mainLogo" onClick={() => (navigate("/Cau"))} />
+        <div className="mainLogo"/>
 
         <div className = "innerCameraFrame"/>
 
@@ -44,11 +44,6 @@ function Home() {
         </div>
       </div>
     </div>
-    // <>
-    //   <iframe src = {iaaaa} className = "mainBG">
-    //   </iframe>
-
-    // </>
   )
 }
 
