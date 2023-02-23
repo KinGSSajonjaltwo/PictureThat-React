@@ -24,13 +24,22 @@ function Home() {
         <div className = "innerCameraFrame"/>
 
         <div className="mainButtons">
-          <div className="cardNumControlButton">
+          <div className="cardNumControlButton font500 ">
+            {/* <div className="titleBox font500">장 수</div> */}
             <div onClick={() => {setCardNum(rev => rev <= 4 ? rev : rev - 1)}}>
-              <div className="leftArrow centerAlign">-</div>
+              {
+                cardNum > 4 
+                ? <div className="leftArrow centerAlign font500">-</div>
+                : <div className="leftArrowMax"/>
+              }
             </div>
             {cardNum}
             <div onClick={() => {setCardNum(rev => rev >= 10 ? rev : rev + 1)}}>
-              <div className="rightArrow centerAlign">+</div>
+              {
+                cardNum < 10 
+                ? <div className="rightArrow centerAlign font500">+</div>
+                : <div className="rightArrowMax"/>
+              }
             </div>
           </div>
           <div className="enter"></div>
@@ -39,7 +48,7 @@ function Home() {
               setPictureNum(cardNum);
             }}/>
           <br></br>
-          <div className="startButton" onClick={() => (navigate("/EventRan"))}/>
+          {/* <div className="startButton" onClick={() => (navigate("/EventRan"))}/> */}
           <br></br>
         </div>
       </div>
