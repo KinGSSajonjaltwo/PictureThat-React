@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css"
-import {setPictureNum} from "../../assets/define/define"
+import {g_pictureNum, setPictureNum} from "../../assets/define/define"
 
 import { getRandomCards } from "../../components/CardGenerator";
 
@@ -9,7 +9,7 @@ import { getRandomCards } from "../../components/CardGenerator";
 function Home() {
   let navigate = useNavigate();
 
-  const [cardNum, setCardNum] = useState(4);
+  const [cardNum, setCardNum] = useState(g_pictureNum);
 
   return(
     <div className = "mainBG">
