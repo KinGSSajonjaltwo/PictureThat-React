@@ -25,9 +25,13 @@ function Home() {
 
         <div className="mainButtons">
           <div className="cardNumControlButton">
-            <div onClick={() => {setCardNum(rev => rev <= 4 ? rev : rev - 1)}}>12</div>
+            <div onClick={() => {setCardNum(rev => rev <= 4 ? rev : rev - 1)}}>
+              <div className="leftArrow centerAlign">-</div>
+            </div>
             {cardNum}
-            <div onClick={() => {setCardNum(rev => rev >= 10 ? rev : rev + 1)}}>34</div>
+            <div onClick={() => {setCardNum(rev => rev >= 10 ? rev : rev + 1)}}>
+              <div className="rightArrow centerAlign">+</div>
+            </div>
           </div>
           <div className="enter"></div>
           <div className="startButton" onClick={() => {
