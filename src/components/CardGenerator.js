@@ -28,7 +28,7 @@ export const getRandomCards = async (cardNums) => {
   //cardNum 개수만큼 RandomCard 생성
   logEvent(analytics, 'getRandomCards');
   const randomIndex = await getrandomIndex(cardNums);
-  console.log(randomIndex)
+  // console.log(randomIndex)
   let resultDeck;
   switch (cardNums) {
     case 1:
@@ -141,7 +141,7 @@ export const getRandomCards = async (cardNums) => {
       break;
   }
 
-  console.log(resultDeck);
+  // console.log(resultDeck);
 
 
   return resultDeck
