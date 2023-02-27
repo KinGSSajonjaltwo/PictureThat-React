@@ -12,7 +12,7 @@ const fdbCollectionName = "ver1";
 
 export const getRandomCardsTest = async (cardNums) => {
   
-  logEvent(analytics, '랜덤카드 테스트 함수 호출',{name: '랜덤카드테스트 실행'});
+  logEvent(analytics, 'getRandomCardsTest');
   let resultDeck;
   resultDeck = await Promise.all([
     getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 3))),
@@ -26,9 +26,9 @@ export const getRandomCardsTest = async (cardNums) => {
 
 export const getRandomCards = async (cardNums) => {
   //cardNum 개수만큼 RandomCard 생성
-
+  logEvent(analytics, 'getRandomCards');
   const randomIndex = await getrandomIndex(cardNums);
-  console.log(randomIndex)
+  // console.log(randomIndex)
   let resultDeck;
   switch (cardNums) {
     case 1:
@@ -141,7 +141,7 @@ export const getRandomCards = async (cardNums) => {
       break;
   }
 
-  console.log(resultDeck);
+  // console.log(resultDeck);
 
 
   return resultDeck
@@ -167,13 +167,13 @@ const getrandomIndex = async (getrandomIndex) => {
   
   let collectionLength = docSnap.data().nums;
   
-  localStorage.clear('indexChecker')
-  if ( localStorage.getItem("indexChecker") == null  ){ 
-    // to do 남아있는 자리 수 확인 
-    let indexCheckerArray = ["a"];
-    localStorage.setItem("indexChecker", "asd")
-  }
-  let randomIndex = selectIndex(collectionLength, getrandomIndex);
+  // localStorage.clear('indexChecker')
+  // if ( localStorage.getItem("indexChecker") == null  ){ 
+  //   // to do 남아있는 자리 수 확인 
+  //   let indexCheckerArray = ["a"];
+  //   localStorage.setItem("indexChecker", "asd")
+  // }
+  let randomIndex = selectIndexwithHistory(collectionLength, getrandomIndex);
   return randomIndex
 
 }
@@ -190,6 +190,41 @@ const selectIndex = (totalIndex, selectingNumber) => {
   }
   return randomIndexArray
 }
+
+const selectIndexwithHistory = (totalIndex, selectingNumber) => {
+
+  let cardhistory = JSON.parse(localStorage.getItem("cardhistory"));
+  let randomIndexArray = [];
+
+  if (cardhistory == null ){
+    logEvent(analytics, 'cardhistory == null');
+    cardhistory = [] ;
+
+  }
+
+
+  for (let i = 0; i < selectingNumber; i++) { //check if there is any duplicate index
+    const randomNum = Math.floor(Math.random() * totalIndex)
+    if (  cardhistory.indexOf(randomNum) === -1 && (randomIndexArray.indexOf(randomNum) === -1)  ) {
+      randomIndexArray.push(randomNum)
+      cardhistory.push(randomNum)
+    } else { //if the randomNum is already in the array retry
+      i--
+    }
+  }
+
+  if (cardhistory.length >= 21){
+    cardhistory = [];
+    logEvent(analytics, 'cardhistory clear');
+  }
+
+  localStorage.setItem("cardhistory",JSON.stringify(cardhistory))
+
+  return randomIndexArray
+
+
+}
+
 
 
 // getRandom Cards - MZ테스트 ver.
