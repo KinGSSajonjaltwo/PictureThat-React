@@ -1,4 +1,4 @@
-export var g_pictureNum = 4;
+export var g_pictureNum = 8;
 
 export function setPictureNum(a) {
     g_pictureNum = a;

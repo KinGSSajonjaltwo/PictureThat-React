@@ -20,6 +20,7 @@ function Home() {
         <div className = "camera3"/>
         <div className = "camera4"/>
         <div className="mainLogo"/>
+        <div className="detailLogo">카드 기반 포즈 추천 서비스</div>
 
         <div className = "innerCameraFrame"/>
 
@@ -47,13 +48,14 @@ function Home() {
               navigate("/PocaRan");
               setPictureNum(cardNum);
             }}/>
-          <br></br>
+          {/* <br></br> */}
           {/* <div className="startButton" onClick={() => (navigate("/EventRan"))}/> */}
-          <br></br>
+          {/* <br></br> */}
         </div>
       </div>
     </div>
-  )
+  )     
+
 }
 
 export default Home
