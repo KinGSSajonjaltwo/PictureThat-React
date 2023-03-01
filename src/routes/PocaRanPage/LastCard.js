@@ -65,7 +65,7 @@ export const LastCard = (datas) => {
           <div className="keywordSize centerAlign">
             <div className="smallBox centerAlign">
               <div className="blockBox">
-                {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
+                {datas && datas['datas'].slice(0, g_pictureNum).reverse().map((data, index) => (
                   <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
                 ))}
               </div>
