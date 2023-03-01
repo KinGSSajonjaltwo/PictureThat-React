@@ -50,6 +50,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
 }
 
 .opacityZero {
@@ -99,6 +100,8 @@
 .cardsHouse {
     height: 100vw;
     width: 75vw;
+
+    margin-top: 60px;
     box-sizing: border-box;
     position: relative;
 }
