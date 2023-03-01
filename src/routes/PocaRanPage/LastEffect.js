@@ -7,7 +7,11 @@ export const LastEffect = (s) => {
   
   return (
     <>
-      <div className="downLog centerAlign">수고하셨습니다.</div>
+        <div className="upLog">
+            <div className="upTitle"/>
+            <div className="upTag">@cau_picturethat</div>
+        </div>
+        <div className="downLog centerAlign">수고하셨습니다.</div>
     </>
     
 
