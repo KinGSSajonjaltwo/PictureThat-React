@@ -7,22 +7,22 @@ import { analytics } from "./FBase";
 import { logEvent } from "firebase/analytics";
 
 const fdb = getFirestore(fBase);
-const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
+// const collectionNameSet = ["Classic", "Meme", "Together", "Change"];
 const fdbCollectionName = "ver1";
 
-export const getRandomCardsTest = async (cardNums) => {
+// export const getRandomCardsTest = async (cardNums) => {
   
-  logEvent(analytics, 'getRandomCardsTest');
-  let resultDeck;
-  resultDeck = await Promise.all([
-    getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 3))),
-    getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 2))),
-    getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 1))),
-    getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 0)))
-  ]); 
-  return resultDeck;
+//   logEvent(analytics, 'getRandomCardsTest');
+//   let resultDeck;
+//   resultDeck = await Promise.all([
+//     getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 3))),
+//     getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 2))),
+//     getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 1))),
+//     getCardFromdocQuery(query(collection(fdb, "test3"), where("id", "==", 0)))
+//   ]); 
+//   return resultDeck;
 
-}
+// }
 
 export const getRandomCards = async (cardNums) => {
   //cardNum 개수만큼 RandomCard 생성
@@ -33,108 +33,108 @@ export const getRandomCards = async (cardNums) => {
   switch (cardNums) {
     case 1:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
       ]);
       break;
 
     case 2:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
       ]);
       break;
 
     case 3:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
       ]);
       return resultDeck;
       break;
 
     case 4:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3])))
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3])))
       ]);
       return resultDeck;
       break;
 
     case 5:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[4]))),
       ]);
       break;
     
     case 6:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[4]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[5])))
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[5])))
       ]);
       break;
 
     case 7:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[4]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[5]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[6])))
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[6])))
       ]);
       break;
 
     case 8:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[4]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[5]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[6]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[7]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[6]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[7]))),
       ]);
       break;
 
     case 9:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[4]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[5]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[6]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[7]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[8])))
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[6]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[7]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[8])))
       ]);
       break;
 
     case 10:
       resultDeck = await Promise.all([
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[0]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[1]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[2]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[3]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[4]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[5]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[6]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[7]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[8]))),
-        getCardFromdocQuery(query(collection(fdb, "ver1"), where("id", "==", randomIndex[9])))
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[0]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[1]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[2]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[3]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[4]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[5]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[6]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[7]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[8]))),
+        getCardFromdocQuery(query(collection(fdb, fdbCollectionName), where("id", "==", randomIndex[9])))
       ]);
       break;
     default:
@@ -196,7 +196,7 @@ const selectIndexwithHistory = (totalIndex, selectingNumber) => {
 
   let cardhistory = JSON.parse(localStorage.getItem("cardhistory"));
   let randomIndexArray = [];
-
+  cardhistory = [];
   if (cardhistory == null ){
     logEvent(analytics, 'cardhistory == null');
     cardhistory = [] ;
