@@ -177,7 +177,7 @@ const getrandomIndex = async (getrandomIndex) => {
   return randomIndex
 
 }
-
+/*
 const selectIndex = (totalIndex, selectingNumber) => {
   let randomIndexArray = []
   for (let i = 0; i < selectingNumber; i++) { //check if there is any duplicate index
@@ -190,6 +190,7 @@ const selectIndex = (totalIndex, selectingNumber) => {
   }
   return randomIndexArray
 }
+*/
 
 const selectIndexwithHistory = (totalIndex, selectingNumber) => {
 
@@ -225,7 +226,7 @@ const selectIndexwithHistory = (totalIndex, selectingNumber) => {
 
 }
 
-
+/*
 
 // getRandom Cards - MZ테스트 ver.
 export const getEventCards = async (cardNums) => {
@@ -293,6 +294,7 @@ const selectCollectionIndex = async () => {
   return randomCollectionsIndexArray;
 }
 
+*/
 
 
 
