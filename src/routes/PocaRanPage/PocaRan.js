@@ -23,12 +23,13 @@ function PocaRan() {
 
 const PocaRanAppBar = ({page}) => {
   let navigate = useNavigate();
+
   return (
-    <div className="ranAppBar">
-      <div className="closeIcon icon"onClick={() => (navigate("/"))}/>
+    <div className={['ranAppBar', page === g_pictureNum + 1 && 'opacityZero'].join(' ')}>
       {
         page !== g_pictureNum + 1
-        && (<div className="appBarText centerAlign font400">{page}/{g_pictureNum}</div>)
+        && (<><div className="closeIcon icon"onClick={() => (navigate("/"))}/>
+        <div className="appBarText centerAlign font400">{page}/{g_pictureNum}</div></>)
       }
       <div className="moreIcon icon"></div>
     </div> 

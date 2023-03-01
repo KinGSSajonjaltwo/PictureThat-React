@@ -25,6 +25,12 @@
     width: 100%;
 }
 
+.finalCardBG {
+    background: #ffffff;
+    background-position : center;
+    background-size: cover;
+}
+
 .pictureFrame {
     background-image: url(../../assets/image/pictureframe.png);
     background-size: cover;
