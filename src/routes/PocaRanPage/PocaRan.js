@@ -6,6 +6,7 @@ import { getRandomCards, getRandomCardsTest } from "../../components/CardGenerat
 import { useNavigate } from "react-router-dom";
 import { LastCard } from "./LastCard";
 import { FirstCard } from "./FirstCard";
+import { LastEffect } from "./LastEffect";
 import { g_pictureNum } from "../../assets/define/define";
 
 function PocaRan() {
@@ -164,7 +165,8 @@ const PocaRanBody = ({setPage}) => {
     <div className="flexColumn">
       <div className="flexGrow centerAlign">
         <div className="cardsHouse">
-          {currentIndex <= 0 && <LastCard datas={datas}/>}
+          <LastCard datas={datas}/>
+          {currentIndex + 1 <= 0 && <LastEffect />}
           {datas.map((data, index) => (
             index === currentIndex ?
                 (

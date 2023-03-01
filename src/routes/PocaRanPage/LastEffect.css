@@ -1,0 +1,21 @@
+.downLog {
+    position: absolute;
+    color: #adadad;
+    top: 110vw;
+    width: 100%;
+
+    animation-duration: 0.5s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 100%
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }

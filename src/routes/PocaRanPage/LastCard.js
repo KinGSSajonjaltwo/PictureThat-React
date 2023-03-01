@@ -56,29 +56,32 @@ export const LastCard = (datas) => {
   
 
   return (
-    <div className="cardBody centerAlign shadowEffect finalCardBG">
-      <div className="backCardImg flexGrow flexColumn">
-        <div className="titleSize centerAlign font500">
-          오늘의 포즈
-        </div>
-        <div className="keywordSize centerAlign">
-          <div className="smallBox centerAlign">
-            <div className="blockBox">
-              {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
-                <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
-              ))}
+    <>
+      <div className="cardBody centerAlign shadowEffect finalCardBG">
+        <div className="backCardImg flexGrow flexColumn">
+          <div className="titleSize centerAlign font500">
+            오늘의 포즈
+          </div>
+          <div className="keywordSize centerAlign">
+            <div className="smallBox centerAlign">
+              <div className="blockBox">
+                {datas && datas['datas'].slice(0, 8).reverse().map((data, index) => (
+                  <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="centerAlign"><hr/></div>
-        <div className="bottomSize centerAlign">
-          <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
-            doCopy(getText())}>
-              클립보드 복사
-          </button>
+          <div className="centerAlign"><hr/></div>
+          <div className="bottomSize centerAlign">
+            <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
+              doCopy(getText())}>
+                클립보드 복사
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
+    
 
   )
 }
