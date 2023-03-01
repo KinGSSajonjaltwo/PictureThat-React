@@ -180,6 +180,8 @@
 
 .homeIcon {
     background-image: url(../../assets/icon/Home.svg);
+    width: 25px;
+    height: 25px;
 }
 
 .icon {

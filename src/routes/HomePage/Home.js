@@ -26,11 +26,11 @@ function Home() {
 
         <div className="mainButtons">
           <div className="cardNumControlButton font500 ">
-            {/* <div className="titleBox font500">장 수</div> */}
+            <div className="titleBox">사진 컷수</div>
             <div onClick={() => {setCardNum(rev => rev <= 4 ? rev : rev - 1)}}>
               {
                 cardNum > 4 
-                ? <div className="leftArrow centerAlign font500">-</div>
+                ? <div className="leftArrow centerAlign whiteText">-</div>
                 : <div className="leftArrowMax"/>
               }
             </div>
@@ -38,7 +38,7 @@ function Home() {
             <div onClick={() => {setCardNum(rev => rev >= 10 ? rev : rev + 1)}}>
               {
                 cardNum < 10 
-                ? <div className="rightArrow centerAlign font500">+</div>
+                ? <div className="rightArrow centerAlign whiteText">+</div>
                 : <div className="rightArrowMax"/>
               }
             </div>
