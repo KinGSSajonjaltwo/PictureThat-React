@@ -75,6 +75,14 @@
   width: 200px;
   margin: auto;
   color: #adadad;
+
+  text-align: center;
+  
+  font-size: 12px;
+  position: relative;
+  top : -18px;
+
+
 }
 
 .mainButtons{
