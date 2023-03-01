@@ -78,6 +78,7 @@ export const LastCard = (datas) => {
                 클립보드 복사
             </button>
           </div>
+          <br/>
         </div>
       </div>
     </>
