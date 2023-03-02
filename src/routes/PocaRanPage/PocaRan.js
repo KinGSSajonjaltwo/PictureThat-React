@@ -126,7 +126,7 @@ const PocaRanBody = ({setPage}) => {
         setFirst(false);
         tmp.push(['0','0']);
         setDatas(tmp);
-        console.log(tmp);
+        // console.log(tmp);
       }
     }
     init();
