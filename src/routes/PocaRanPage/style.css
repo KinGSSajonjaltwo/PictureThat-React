@@ -171,7 +171,9 @@
 }
 
 .rotateIcon {
-    background-image: url(../../assets/icon/Rotate.svg);
+    /* background-image: url(../../assets/icon/Rotate.svg); */
+    background-image: url(../../assets/icon/Play.svg);
+    transform: scaleX(-1);
 }
 
 .playIcon {
