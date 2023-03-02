@@ -70,6 +70,8 @@ export const LastEffect = (datas) => {
             )
           }
         </div>
+        {g_pictureNum > 6 && 
+          <div className="downdownLog centerAlign">수고하셨습니다.</div>}
     </>
     
   )

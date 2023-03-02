@@ -89,3 +89,13 @@
 .clipButton:active .clipIcon {
   background-image: url(../../assets/icon/ClipActive.svg);
 }
+
+.downdownLog {
+  position: absolute;
+  color: #adadad;
+  top: 125vw;
+  width: 100%;
+
+  animation-duration: 0.5s;
+  animation-name: slidein;
+}
