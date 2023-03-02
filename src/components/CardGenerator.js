@@ -205,7 +205,7 @@ const selectIndexwithHistory = (totalIndex, selectingNumber) => {
 
 
   for (let i = 0; i < selectingNumber; i++) { //check if there is any duplicate index
-    const randomNum = Math.floor(Math.random() * totalIndex)
+    const randomNum = Math.floor(Math.random() * (totalIndex - 1) + 1 ) 
     if (  cardhistory.indexOf(randomNum) === -1 && (randomIndexArray.indexOf(randomNum) === -1)  ) {
       randomIndexArray.push(randomNum)
       cardhistory.push(randomNum)
@@ -214,7 +214,7 @@ const selectIndexwithHistory = (totalIndex, selectingNumber) => {
     }
   }
 
-  if (cardhistory.length >= 21){
+  if (cardhistory.length >= 31){
     cardhistory = [];
     logEvent(analytics, 'cardhistory clear');
   }
