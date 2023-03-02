@@ -58,7 +58,7 @@ export const LastCard = (datas) => {
 
   return (
     <>
-      <div className="cardBody centerAlign shadowEffect finalCardBG">
+      <div className="cardBody centerAlign finalCardBG">
         <div className="backCardImg flexGrow flexColumn">
           <div className="titleSize centerAlign font500">
             오늘의 포즈

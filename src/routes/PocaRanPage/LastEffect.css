@@ -1,7 +1,7 @@
 .downLog {
     position: absolute;
     color: #adadad;
-    top: 110vw;
+    bottom: -8vh;
     width: 100%;
 
     animation-duration: 0.5s;
@@ -64,6 +64,8 @@
   display: flex;
 
   justify-content: space-evenly;
+  
+  z-index: 1;
 }
 
 .clipText {
@@ -93,7 +95,7 @@
 .downdownLog {
   position: absolute;
   color: #adadad;
-  top: 125vw;
+  bottom: -12vh;
   width: 100%;
 
   animation-duration: 0.5s;
