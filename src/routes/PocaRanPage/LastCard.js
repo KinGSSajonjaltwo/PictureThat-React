@@ -1,5 +1,6 @@
 import "./style.css"
 import "./LastCard.css"
+import "./LastEffect.css"
 import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import { useEffect } from "react";
@@ -72,18 +73,18 @@ export const LastCard = (datas) => {
             </div>
           </div>
           {
-            g_pictureNum <= 6 && (
+            g_pictureNum <= 6 ? (
               <>
                 <div className="centerAlign"><hr/></div>
                 <div className="bottomSize centerAlign">
-                  <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
-                    doCopy(getText())}>
-                      클립보드 복사
-                  </button>
+                  <div className="clipButton centerAlign"
+                    onClick={() => doCopy(getText())}>
+                    <div className="clipIcon icon" />
+                    <div className="clipText font500">클립보드 복사</div>
+                  </div>
                 </div>
-                <br/>
               </>
-            )
+            ) : (<br/>)
           }
           
         </div>
