@@ -196,7 +196,7 @@ const selectIndexwithHistory = (totalIndex, selectingNumber) => {
 
   let cardhistory = JSON.parse(localStorage.getItem("cardhistory"));
   let randomIndexArray = [];
-  cardhistory = [];
+  
   if (cardhistory == null ){
     logEvent(analytics, 'cardhistory == null');
     cardhistory = [] ;
