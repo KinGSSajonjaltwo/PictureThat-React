@@ -71,7 +71,7 @@ export const LastEffect = (datas) => {
           }
         </div>
         {g_pictureNum > 6 && 
-          <div className="downdownLog centerAlign">수고하셨습니다.</div>}
+          <div className="downdownLog centerAlign">스토리 올리고 상품 받아가요!</div>}
     </>
     
   )
