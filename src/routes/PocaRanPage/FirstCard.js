@@ -18,10 +18,10 @@ export const FirstCard = () =>{
         포즈 카드 뒷면은 태그
       </div>
       <div className = "FirstCardHowto font500">
-        카드를 눌러서 카드 뒤집기
+        버튼으로 카드 넘기기
       </div>
       <div className = "FirstCardHowto font500">
-        카드를 밀어서 카드 넘기기
+        카드를 눌러서 카드 뒤집기
       </div>
       <div className = "FirstCardFlexGrow"></div>
       <div className="FirstCardHoneyTip font400 ">
