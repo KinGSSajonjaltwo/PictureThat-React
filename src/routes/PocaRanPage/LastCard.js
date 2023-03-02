@@ -62,7 +62,7 @@ export const LastCard = (datas) => {
           <div className="titleSize centerAlign font500">
             오늘의 포즈
           </div>
-          <div className="keywordSize centerAlign">
+          <div className="keywordSize">
             <div className="smallBox centerAlign">
               <div className="blockBox">
                 {datas && datas['datas'].slice(0, g_pictureNum).reverse().map((data, index) => (
@@ -71,14 +71,21 @@ export const LastCard = (datas) => {
               </div>
             </div>
           </div>
-          <div className="centerAlign"><hr/></div>
-          <div className="bottomSize centerAlign">
-            <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
-              doCopy(getText())}>
-                클립보드 복사
-            </button>
-          </div>
-          <br/>
+          {
+            g_pictureNum <= 6 && (
+              <>
+                <div className="centerAlign"><hr/></div>
+                <div className="bottomSize centerAlign">
+                  <button className="downButtom centerAlign shadowEffect font500" onClick={() => 
+                    doCopy(getText())}>
+                      클립보드 복사
+                  </button>
+                </div>
+                <br/>
+              </>
+            )
+          }
+          
         </div>
       </div>
     </>
