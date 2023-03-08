@@ -1,22 +1,27 @@
-import "./style.css"
-import "./LastCard.css"
-import "./LastEffect.css"
+import "./style.css";
+import "./LastCard.css";
+import "./LastEffect.css";
 import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import { useEffect } from "react";
 import { g_pictureNum } from "../../assets/define/define";
 
+import { analytics } from "../../components/FBase";
+import { logEvent } from "firebase/analytics";
+
 export const LastCard = (datas) => {
-
   const getText = () => {
-    var tmpText = '';
-    datas['datas'].slice(0, g_pictureNum).reverse().forEach((element, index) => {
-      tmpText += (index + 1) + '. ' + element[0] + '\n';
-    });
+    var tmpText = "";
+    datas["datas"]
+      .slice(0, g_pictureNum)
+      .reverse()
+      .forEach((element, index) => {
+        tmpText += index + 1 + ". " + element[0] + "\n";
+      });
     return tmpText;
-  }
+  };
 
-  const doCopy = text => {
+  const doCopy = (text) => {
     // 흐음 1.
     if (navigator.clipboard) {
       // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
@@ -24,6 +29,7 @@ export const LastCard = (datas) => {
         .writeText(text)
         .then(() => {
           alert("클립보드에 복사되었습니다.");
+          logEvent(analytics, "copySuccess");
         })
         .catch(() => {
           alert("복사를 다시 시도해주세요.");
@@ -52,45 +58,49 @@ export const LastCard = (datas) => {
       // 흐름 6.
       document.body.removeChild(textarea);
       alert("클립보드에 복사되었습니다.");
-    }};
-
-  
+    }
+  };
 
   return (
     <>
       <div className="cardBody centerAlign finalCardBG">
         <div className="backCardImg flexGrow flexColumn">
-          <div className="titleSize centerAlign font500">
-            오늘의 포즈
-          </div>
+          <div className="titleSize centerAlign font500">오늘의 포즈</div>
           <div className="keywordSize">
             <div className="smallBox centerAlign">
               <div className="blockBox">
-                {datas && datas['datas'].slice(0, g_pictureNum).reverse().map((data, index) => (
-                  <div className="keywordText" key={index}>{index + 1}. {data[0]}</div>
-                ))}
+                {datas &&
+                  datas["datas"]
+                    .slice(0, g_pictureNum)
+                    .reverse()
+                    .map((data, index) => (
+                      <div className="keywordText" key={index}>
+                        {index + 1}. {data[0]}
+                      </div>
+                    ))}
               </div>
             </div>
           </div>
-          {
-            g_pictureNum <= 6 ? (
-              <>
-                <div className="centerAlign"><hr/></div>
-                <div className="bottomSize centerAlign">
-                  <div className="clipButton centerAlign"
-                    onClick={() => doCopy(getText())}>
-                    <div className="clipIcon icon" />
-                    <div className="clipText font500">클립보드 복사</div>
-                  </div>
+          {g_pictureNum <= 6 ? (
+            <>
+              <div className="centerAlign">
+                <hr />
+              </div>
+              <div className="bottomSize centerAlign">
+                <div
+                  className="clipButton centerAlign"
+                  onClick={() => doCopy(getText())}
+                >
+                  <div className="clipIcon icon" />
+                  <div className="clipText font500">클립보드 복사</div>
                 </div>
-              </>
-            ) : (<br/>)
-          }
-          
+              </div>
+            </>
+          ) : (
+            <br />
+          )}
         </div>
       </div>
     </>
-    
-
-  )
-}
+  );
+};
