@@ -1,6 +1,6 @@
-*, 
+*,
 *::before,
-*::after{
+*::after {
   margin: 0px;
   border: 0px;
   padding: 0px;
@@ -11,4 +11,8 @@ body,
 #root {
   height: 100%;
   width: 100%;
+}
+
+body {
+  overflow: hidden;
 }
