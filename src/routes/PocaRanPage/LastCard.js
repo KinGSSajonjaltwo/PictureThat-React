@@ -22,6 +22,7 @@ export const LastCard = (datas) => {
   };
 
   const doCopy = (text) => {
+    logEvent(analytics, "copyPlease");
     // 흐음 1.
     if (navigator.clipboard) {
       // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
@@ -29,7 +30,6 @@ export const LastCard = (datas) => {
         .writeText(text)
         .then(() => {
           alert("클립보드에 복사되었습니다.");
-          logEvent(analytics, "copySuccess");
         })
         .catch(() => {
           alert("복사를 다시 시도해주세요.");
