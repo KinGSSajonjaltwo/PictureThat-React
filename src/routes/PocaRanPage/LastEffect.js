@@ -1,19 +1,21 @@
-import "./style.css"
-import "./LastEffect.css"
+import "./style.css";
+import "./LastEffect.css";
 import React, { useState } from "react";
 import { g_pictureNum } from "../../assets/define/define";
 
 export const LastEffect = (datas) => {
-
   const getText = () => {
-    var tmpText = '';
-    datas['datas'].slice(0, g_pictureNum).reverse().forEach((element, index) => {
-      tmpText += (index + 1) + '. ' + element[0] + '\n';
-    });
+    var tmpText = "";
+    datas["datas"]
+      .slice(0, g_pictureNum)
+      .reverse()
+      .forEach((element, index) => {
+        tmpText += index + 1 + ". " + element[0] + "\n";
+      });
     return tmpText;
-  }
+  };
 
-  const doCopy = text => {
+  const doCopy = (text) => {
     // 흐음 1.
     if (navigator.clipboard) {
       // (IE는 사용 못하고, 크롬은 66버전 이상일때 사용 가능합니다.)
@@ -49,30 +51,31 @@ export const LastEffect = (datas) => {
       // 흐름 6.
       document.body.removeChild(textarea);
       alert("클립보드에 복사되었습니다.");
-    }};
-  
+    }
+  };
+
   return (
     <>
-        <div className="upLog">
-            <div className="upTitle"/>
-            <div className="upTag">@cau_picturethat</div>
-        </div>
-        <div className="downLog centerAlign">
-          {
-            (
-              g_pictureNum <= 6 
-              ? (<div>수고하셨습니다.</div>)
-              : (<div className="clipButton centerAlign"
-                  onClick={() => doCopy(getText())}>
-                  <div className="clipIcon icon" />
-                  <div className="clipText font500">클립보드 복사</div>
-              </div>)
-            )
-          }
-        </div>
-        {g_pictureNum > 6 && 
-          <div className="downdownLog centerAlign">스토리 올리고 상품 받아가요!</div>}
+      <div className="upLog">
+        <div className="upTitle" />
+        <div className="upTag">@cau_picturethat</div>
+      </div>
+      <div className="downLog centerAlign">
+        {g_pictureNum <= 6 ? (
+          <div>수고하셨습니다.</div>
+        ) : (
+          <div
+            className="clipButton centerAlign"
+            onClick={() => doCopy(getText())}
+          >
+            <div className="clipIcon icon" />
+            <div className="clipText font500">클립보드 복사</div>
+          </div>
+        )}
+      </div>
+      {g_pictureNum > 6 && (
+        <div className="downdownLog centerAlign">감사합니다!</div>
+      )}
     </>
-    
-  )
-}
+  );
+};
